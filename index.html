@@ -3,8 +3,36 @@
 <head>
     <title>Occisor's Den</title>
 </head>
-<body style="background-color: black;">
-    <h1 style = "Color: Red;">Occisor's Den</h1>
-    <p>Welcome to my den everyone, here I will be posting all my updates based on my work and other contents. Feel free to subscribe or </p>
+<body  style="background-color: black;">
+    <div style= "font-family:copper plate; background:scroll; Color:purple">
+        <h1 style="Color:White">Occisor's Den</h1>
+        <p style="margin-left: 200px;"><b>WELCOME TO THE DEN EVERYONE,</b><br/> Feel free to check out my work from below buttons. </p>
+    </div>
+    <div class="button-container">
+        <button class="button" title="Recent Articles">Recent Articles</button>
+        <button class="button" title="Medium" >Medium</button>
+        <button class="button" title="Instagram " >Instagram</button>
+    </div>
+    
+    <hr/>
 </body>
+<style>
+    /* Style the button container div */
+    .button-container {
+      display: flex; /* Use flexbox to create a row layout */
+      justify-content: center; /* Center the buttons horizontally */
+      gap: 10px; /* Add some space between the buttons */
+    }
+
+    /* Style the buttons */
+    .button {
+      background-color: purple;
+      color: white;
+      height: 40px; width : 120px;
+      font-family: copper plate;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
 </html>
