@@ -3,36 +3,65 @@
 <head>
     <title>Occisor's Den</title>
 </head>
-<body  style="background-color: black;">
-    <div style= "font-family:copper plate; background:scroll; Color:purple">
-        <h1 style="Color:White">Occisor's Den</h1>
-        <p style="margin-left: 200px;"><b>WELCOME TO THE DEN EVERYONE,</b><br/> Feel free to check out my work from below buttons. </p>
-    </div>
-    <div class="button-container">
-        <button class="button" title="Recent Articles">Recent Articles</button>
-        <button class="button" title="Medium" >Medium</button>
-        <button class="button" title="Instagram " >Instagram</button>
-    </div>
-    
-    <hr/>
-</body>
-<style>
-    /* Style the button container div */
-    .button-container {
-      display: flex; /* Use flexbox to create a row layout */
-      justify-content: center; /* Center the buttons horizontally */
-      gap: 10px; /* Add some space between the buttons */
-    }
+  <body  style="background-color: black;">
+      <div style= "font-family:copper plate; background:scroll; Color:purple">
+          <h1 style="Color:White">Occisor's Den</h1>
+          <p style="margin-left: 200px;"><b>WELCOME TO THE DEN EVERYONE,</b><br/> Feel free to check out my work from below buttons. </p>
+      </div>
+      <div class="button-container">
+          <button class="button" onclick="openPage('recentArticlespage.html')" title="Recent Articles">Recent Articles</button>
+          <button class="button" onclick="openLink('https://medium.com/@natmotgobin')" title="Medium" >Medium</button>
+          <button class="button" onclick="openLink('https://www.instagram.com/occisorr#')" title="Instagram " >Instagram</button>
+      </div>
+      <br/><br/><br/>
+      <hr/>
+      <br/><br/><br/>
+      <div>
+        <h1 style="Color:purple">About Me</h1>
+        <p style ="color:white">               A Curious post-teen aged guy with a lot of rage and trying to reduce them in the form of words.<br/>
+          I'm an author my books are out and listed below.<br/>
+          Breathing since 2000. <br/><br/>
+          <b>Books : </b><br/>
+          1. No Time To Beseech Volume-1  (Crime Thriller Novel) <a href="https://www.amazon.in/No-Time-Beseech-Occupation-decadence/dp/B08NYGTDBJ">Interested? Click here to take a look</a><br/>
+          2. Rhymes Of Teens (A poem Anthology) <a href="https://www.amazon.in/Rhymes-Teens-X-Anto-Gibson-ebook/dp/B09BG1L8DK">E-Book Available Check Now</a> 
+          3. The Imbalance (Sci-fi Novel) <a>Yet to be out</a>
+        </p>  
+      </div>
+      <hr/>
+      <br/><br/><br/>
+      <b style="color: purple;">Thanks For Your time taken on reading my website, And yes I designed this website. <br/> Have a good time y'all Occisor peace out...</b>
+    </body>
+  <style>
+      
+      .button-container {
+        display: flex;
+        justify-content: center; 
+        gap: 10px;
+      }
+      .button:hover {
+        background-color: red; 
+        border-color: black; 
+      }
 
-    /* Style the buttons */
-    .button {
-      background-color: purple;
-      color: white;
-      height: 40px; width : 120px;
-      font-family: copper plate;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-  </style>
+      
+      .button {
+        background-color: purple;
+        color: white;
+        height: 40px; width : 300px;
+        font-family: copper plate;
+        border-width: 10px;
+        border-color: white;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+    </style>
+    <script>
+      function openPage(pageURL) {
+        window.location.href = pageURL; // Redirect to the internal page
+      }
+
+      function openLink(url) {
+        window.open(url, '_blank'); // Opens the external link in a new tab/window
+      }
+    </script>
 </html>
