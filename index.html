@@ -1,76 +1,137 @@
-<!DOCTYPE html>
 <html>
-  <link rel="stylesheet" href="indexHtmlCSS">
-<head>
-    <title>Occisor's Den</title>
-</head>
-  <body style="background-color: black;">
-      <div class=" bg-image" style= "font-family:copper plate; Color:orange">
-          <h1 style="Color:White">Occisor's Den</h1><br/><br/><br/>
-          <p style="margin-left: 200px;"><b>WELCOME TO THE DEN EVERYONE,</b> Feel free to check out my work from the below buttons. </p><br/><br/><br/>
-          <div class="button-container">
-            <button class="button" onclick="openPage('recentArticlespage.html')" title="Recent Articles">Recent Articles</button><br/>
-            <button class="button" onclick="openLink('https://medium.com/@natmotgobin')" title="Medium" >Medium</button><br/>
-            <button class="button" onclick="openLink('https://www.instagram.com/occisorr#')" title="Instagram " >Instagram</button>
-        </div><br/><br/><br/>
-      </div>
-      <hr/>
-      <br/><br/><br/>
-      <div>
-        <h1 style="Color:orange">About Me</h1>
-        <p style ="color:white">               A Curious post-teen aged guy with a lot of rage and trying to reduce them in the form of words.<br/>
-          I'm an author; my books are out and listed below.<br/>
-          Anto Gibson, A working software developer with 1+ year experience and 23 years young<br/><br/>
-          <b>Books : </b><br/>
-          1. No Time To Beseech Volume-1  (Crime Thriller Novel) <a class="BooksName" href="https://www.amazon.in/NO-TIME-BESEECH-Occupation-decadence/dp/1637450249/ref=sr_1_1?crid=3RPAN7M05TZFZ&keywords=no+time+to+beseech&qid=1690016015&s=books&sprefix=no+time+to+beseech%2Cstripbooks%2C229&sr=1-1">Interested? Click here to take a look</a><br/>
-          2. Rhymes Of Teens (A poem Anthology) <a class="BooksName" href="https://www.amazon.in/Rhymes-Teens-X-Anto-Gibson-ebook/dp/B09BG1L8DK">E-Book Available Check Now</a><br/>
-          3. The Imbalance (Sci-fi Novel) <a class="BooksName">Yet to be out</a><br/>
-        </p>  
-      </div>
-      <br/><br/><br/>
-      <hr/>
-      <br/><br/><br/>
-      <b style="margin-left:200px;color: orange;">Thanks For the time taken on reading my website, And yes I designed this website. Have a good time y'all Occisor peace out...</b>
+    
+    <head>
+        <title>Occisor's Den</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .button:hover {
+                background-color: red; 
+                border-color: black; 
+              }
+              .BooksName{
+                color:red;
+              }
+              .button {
+                  background-color: orange;
+                  color: white;
+                  font-size: larger;
+                  font-weight: bolder;
+                  height: 100px; width : 450px;
+                  font-family: copper plate;
+                  border-width: 10px;
+                  border-color: white;
+                  border-radius: 5px;
+                  cursor: pointer;
+                  margin-bottom: 30px;
+              }
+              .mobile-button {
+                background-color: orange;
+                color: white;
+                font-size: medium;
+                height: 50px; width : 200px;
+                font-family: copper plate;
+                border-width: 10px;
+                border-color: white;
+                border-radius: 5px;
+                cursor: pointer;
+                margin-bottom: 30px;
+              }
+              body{
+                background: linear-gradient(to right bottom, red, black, black);
+              }
+              .bg-image {
+                background-image: url("LOGO wallpaper (3).png");
+                background-size:cover;
+              }
+              .button-container {
+                font-family: copper plate;
+                justify-content: center;
+                margin-left: 33%;
+              }
+              .button-container-mobile {
+                font-family: copper plate;
+                justify-content: center;
+                margin-left: 65px;
+              }
+            @media (max-width: 768px) {
+                .desktop-only {
+                  display: none; /* Hide on mobile */
+                }
+              }
+              
+              @media (min-width: 769px) {
+                .mobile-only {
+                  display: none; /* Hide on desktop */
+                }
+              }
+          </style>
+          <script>
+            function openPage(pageURL) {
+              window.location.href = pageURL;
+            }
+      
+            function openLink(url) {
+              window.open(url, '_blank');
+            }
+          </script>
+    </head>
+    <body>
+        <div class="mobile-only">
+            <div style= "font-family:copper plate; Color:orange">
+                <h1 style="Color:White">Occisor's Den</h1><br/><br/><br/>
+                <p style="margin-left: 20px;"><b>WELCOME TO THE DEN EVERYONE,</b> Feel free to check out my work from the below buttons. </p><br/><br/><br/>
+                <div class="button-container-mobile">
+                  <button class="mobile-button" onclick="openPage('recentArticlespage.html')" title="Recent Articles">Recent Articles</button><br/>
+                  <button class="mobile-button" onclick="openLink('https://medium.com/@natmotgobin')" title="Medium" >Medium</button><br/>
+                  <button class="mobile-button" onclick="openLink('https://www.instagram.com/occisorr#')" title="Instagram " >Instagram</button>
+              </div><br/><br/><br/>
+            </div>
+            <hr/>
+            <br/><br/><br/>
+            <div>
+              <h1 style="Color:orange">About Me</h1>
+              <p style ="color:white">               A Curious post-teen aged guy with a lot of rage and trying to reduce them in the form of words.<br/>
+                I'm an author; my books are out and listed below.<br/>
+                Anto Gibson, A working software developer with 1+ year experience and 23 years young<br/><br/>
+                <b>Books : </b><br/>
+                1. No Time To Beseech Volume-1  (Crime Thriller Novel) <a class="BooksName" href="https://www.amazon.in/NO-TIME-BESEECH-Occupation-decadence/dp/1637450249/ref=sr_1_1?crid=3RPAN7M05TZFZ&keywords=no+time+to+beseech&qid=1690016015&s=books&sprefix=no+time+to+beseech%2Cstripbooks%2C229&sr=1-1">Interested? Click here to take a look</a><br/>
+                2. Rhymes Of Teens (A poem Anthology) <a class="BooksName" href="https://www.amazon.in/Rhymes-Teens-X-Anto-Gibson-ebook/dp/B09BG1L8DK">E-Book Available Check Now</a><br/>
+                3. The Imbalance (Sci-fi Novel) <a class="BooksName">Yet to be out</a><br/>
+              </p>  
+            </div>
+            <br/><br/><br/>
+            <hr/>
+            <br/><br/><br/>
+            <b style="margin-left:20px;color: orange; margin-bottom:20px;">Thanks For the time taken on reading my website, And yes I designed this website. Have a good time y'all Occisor peace out...</b><br/><br/><br/>
+          </div>
+          <div class="desktop-only">
+            <div style= "font-family:copper plate; Color:orange">
+                    <h1 style="Color:White">Occisor's Den</h1><br/><br/><br/>
+                    <p style="margin-left: 200px;"><b>WELCOME TO THE DEN EVERYONE,</b> Feel free to check out my work from the below buttons. </p><br/><br/><br/>
+                    <div class="button-container">
+                      <button class="button" onclick="openPage('recentArticlespage.html')" title="Recent Articles">Recent Articles</button><br/>
+                      <button class="button" onclick="openLink('https://medium.com/@natmotgobin')" title="Medium" >Medium</button><br/>
+                      <button class="button" onclick="openLink('https://www.instagram.com/occisorr#')" title="Instagram " >Instagram</button>
+                  </div><br/><br/><br/>
+            </div>
+            <hr/>
+            <br/><br/><br/>
+            <div class="about-me-division">
+                <h1 style="Color:orange">About Me</h1>
+                <p style ="color:white">               A Curious post-teen aged guy with a lot of rage and trying to reduce them in the form of words.<br/>
+                I'm an author; my books are out and listed below.<br/>
+                Anto Gibson, A working software developer with 1+ year experience and 23 years young<br/><br/>
+                <b>Books : </b><br/>
+                1. No Time To Beseech Volume-1  (Crime Thriller Novel) <a class="BooksName" href="https://www.amazon.in/NO-TIME-BESEECH-Occupation-decadence/dp/1637450249/ref=sr_1_1?crid=3RPAN7M05TZFZ&keywords=no+time+to+beseech&qid=1690016015&s=books&sprefix=no+time+to+beseech%2Cstripbooks%2C229&sr=1-1">Interested? Click here to take a look</a><br/>
+                2. Rhymes Of Teens (A poem Anthology) <a class="BooksName" href="https://www.amazon.in/Rhymes-Teens-X-Anto-Gibson-ebook/dp/B09BG1L8DK">E-Book Available Check Now</a><br/>
+                3. The Imbalance (Sci-fi Novel) <a class="BooksName">Yet to be out</a><br/>
+                </p>  
+            </div>
+            <br/><br/><br/>
+            <hr/>
+            <br/><br/><br/>
+            <b style="margin-left:200px;color: orange;">Thanks For the time taken on reading my website, And yes I designed this website. Have a good time y'all Occisor peace out...</b>
+            <br/><br/><br/>    
+        </div>
     </body>
-  <style>
-      
-      .button:hover {
-        background-color: red; 
-        border-color: black; 
-      }
-      .BooksName{
-        color:red;
-      }
-      
-      .button {
-        background-color: orange;
-        color: white;
-        font-size: larger;
-        font-weight: bolder;
-        height: 100px; width : 450px;
-        font-family: copper plate;
-        border-width: 10px;
-        border-color: white;
-        border-radius: 5px;
-        cursor: pointer;
-        margin-bottom: 30px;
-      }
-      .bg-image {
-        background-image: url("LOGO wallpaper (3).png");
-        background-size:cover;
-      }
-      .button-container {
-          justify-content: center;
-          margin-left: 35%;
-      }
-    </style>
-    <script>
-      function openPage(pageURL) {
-        window.location.href = pageURL;
-      }
-
-      function openLink(url) {
-        window.open(url, '_blank');
-      }
-    </script>
 </html>
