@@ -61,10 +61,17 @@ p,h2 {
 .topicIcon{
     width: 25%;
 }
-.displayFlex{
+.displayFlex-column{
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-evenly
+}
+.displayFlex-row{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly
 }
 .guideImages{width: 900px;}
 
@@ -77,6 +84,15 @@ p,h2 {
 }
 a:hover{
     color: white;
+}
+.homeButton{
+    color:rgb(55, 184, 43);
+    background-color: transparent;
+    border: none;
+}
+.homeButton:hover{
+    color:orange;
+    background-color: black;
 }
 @media (max-width: 768px) {
     .desktop-only {

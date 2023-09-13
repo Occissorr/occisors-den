@@ -9,12 +9,13 @@
 <body class="body" style="overflow-Y: scroll; background: linear-gradient(to right bottom, rgb(55, 184, 43), black, black);">
     <div class="desktop-only">
         <div class= "container">
-            <div class="displayFlex">
+            <div class="displayFlex-row">
                 <img class="topicIcon" src="srcImages/valorantSrcFiles/viperIcon.png"/>
                 <span class="font-fam color-viper">
                     <h1 style="font-size: xx-large;">Viper LineUps Play Book</h1>
                     <a href="https://valoplant.gg" class="color-viper">Create Your Own Play Books...</a>
-                </span>          
+                </span>
+                <button class="homeButton" onclick="openPage('index.html')" title="Home Page">Back To Home</button>
             </div>
             <div class="expandable-div">
                 <div class="expandable-div-header">
@@ -78,11 +79,12 @@
     </div>
     <div class="mobile-only">
         <div class= "container">
-            <div class="displayFlex">
+            <div class="displayFlex-column">
                 <img class="topicIcon" src="srcImages/valorantSrcFiles/viperIcon.png"/>
                 <span class="font-fam color-viper">
                     <h1 style="font-size: xx-large;">Viper LineUps Play Book</h1>
                     <a href="https://valoplant.gg" class="color-viper">Create Your Own Play Books...</a>
+                    <button class="homeButton" onclick="openPage('index.html')" title="Home Page">Back To Home</button>
                 </span>          
             </div>
             <div class="expandable-div div-mob">
@@ -168,6 +170,13 @@
             }     
         });
     });
+    function openPage(pageURL) {
+        window.location.href = pageURL;
+    };
+
+    function openLink(url) {
+        window.open(url, '_blank');
+    };
 </script>
 </body>
 </html>
