@@ -1,18 +1,69 @@
-.container { display: flex; flex-direction: column; align-items: center; }
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.overlay{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+  .enlarged-image {
+    max-width: 95%;
+    max-height: 95%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .close-overlay {
+    position: absolute;
+    top: 55px;
+    right: 55px;
+    height: 35px;
+    border-radius: 20px;
+    font-size: 20px;
+    width: 35px;
+    background: red;
+    color: black;
+    border: none;
+  }
 
-.expandable-div { width: 900px; margin: 1rem; padding: 1rem; border: 1px solid  rgb(55, 184, 43); border-radius: 5px; }
+.expandable-div {
+    width: 900px;
+    margin: 1rem;
+    padding: 1rem;
+    border: 1px solid rgb(55, 184, 43);
+    border-radius: 5px;
+}
 
-.expandable-div-header { display: flex; justify-content: space-between; align-items: center; }
+.expandable-div-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-.expandable-div-header h2 { margin: 0; }
+.expandable-div-header h2 {
+    margin: 0;
+}
 
-.div-mob{width: 310px; padding-top: 20px;}
+.div-mob {
+    width: 310px;
+    padding-top: 20px;
+}
 
-.button-width-mob{gap: 210px;}
+.button-width-mob {
+    gap: 210px;
+}
 
-.expandable-div-button { 
-    
-    display: flex;            
+.expandable-div-button {
+
+    display: flex;
     border: none;
     border-radius: 5px;
     background-color: transparent;
@@ -21,12 +72,17 @@
     align-items: center;
     flex-direction: row;
 }
-.width-button-desktop {width: 900px; gap: 700px;}
+
+.width-button-desktop {
+    width: 900px;
+    gap: 700px;
+}
 
 .expandable-div:hover {
-    color:white;
+    color: white;
     background-color: rgb(255, 255, 255);
 }
+
 .arrow-icon {
     width: 0;
     height: 0;
@@ -35,73 +91,104 @@
     margin-right: 5px;
 }
 
-.arrow-down { border-top: 5px solid  rgb(55, 184, 43); }
+.arrow-down {
+    border-top: 5px solid rgb(55, 184, 43);
+}
 
-.arrow-up { border-bottom: 5px solid  rgb(55, 184, 43); }
+.arrow-up {
+    border-bottom: 5px solid rgb(55, 184, 43);
+}
 
-.expandable-div-content-mob {display: none; max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.5s ease-in-out;}
-
-.expanded .expandable-div-content { max-height: 1000px; }
-
-.expanded .expandable-div-content-mob { max-height: 200px; }
-
-.expandable-div-content { 
-    display: none; 
+.expandable-div-content-mob {
+    display: none;
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.5s ease-in-out;
+    transition: all 0.5s;
 }
 
-.container{ display: flex ;}
-p,h2 {
+.expanded .expandable-div-content {
+    max-height: 1000px;
+}
+
+.expanded .expandable-div-content-mob {
+    max-height: 200px;
+}
+
+.expandable-div-content {
+    display: none;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.5s ease-in-out;
+}
+
+.container {
+    display: flex;
+}
+
+p,
+h2 {
     color: rgb(55, 184, 43);
 }
-.topicIcon{
+
+.topicIcon {
     width: 25%;
 }
-.displayFlex-column{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-evenly
-}
-.displayFlex-row{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-evenly
-}
-.guideImages{width: 900px;}
 
-.guideImages-mob{width: 300px;}
-.font-fam{
-    font-family:Copperplate, Papyrus, fantasy;
+.displayFlex-column {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly
 }
-.color-viper{
-    color:rgb(55, 184, 43);
+
+.displayFlex-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly
 }
-a:hover{
+
+.guideImages {
+    width: 900px;
+}
+
+.guideImages-mob {
+    width: 300px;
+}
+
+.font-fam {
+    font-family: Copperplate, Papyrus, fantasy;
+}
+
+.color-viper {
+    color: rgb(55, 184, 43);
+}
+
+a:hover {
     color: white;
 }
-.homeButton{
-    color:rgb(55, 184, 43);
+
+.homeButton {
+    color: rgb(55, 184, 43);
     background-color: transparent;
     border: none;
 }
-.homeButton:hover{
-    color:orange;
+
+.homeButton:hover {
+    color: orange;
     background-color: black;
 }
+
 @media (max-width: 768px) {
     .desktop-only {
-      display: none; /* Hide on mobile */
+        display: none;
+        /* Hide on mobile */
     }
-  }
-  
-  @media (min-width: 769px) {
+}
+
+@media (min-width: 769px) {
     .mobile-only {
-      display: none; /* Hide on desktop */
+        display: none;
+        /* Hide on desktop */
     }
-  }
+}
