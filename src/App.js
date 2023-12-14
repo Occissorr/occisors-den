@@ -1,10 +1,10 @@
 import React from 'react';
+import MainPage from './MainPage/MainPage';
 
 function App() {
   return (
     <div>
-      {/* Your converted JSX code here */}
-      <h1>Hello, React!</h1>
+      <MainPage/>
     </div>
   );
 }
