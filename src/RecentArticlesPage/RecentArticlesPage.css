@@ -1,0 +1,95 @@
+.overlay{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+  .enlarged-image {
+    max-width: 75%;
+    max-height: 75%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .close-overlay {
+    position: absolute;
+    top: 55px;
+    right: 55px;
+    height: 35px;
+    border-radius: 20px;
+    font-size: 20px;
+    width: 35px;
+    background: red;
+    color: black;
+    border: none;
+  }
+
+  .blog-post {
+    font-family: copper plate;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-style:dashed;
+    border-width: 2px;
+    border-radius: 20px;
+    border-color: orange;
+  }
+  .blog-image {
+    border:none;
+    height: 300px;
+    width: fit-content;
+    border-radius: 20px;
+  }
+
+  .blog-heading {
+    font-family: copper plate;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: orange;
+  }
+  .blog-description {
+    font-family: copper plate;
+    font-size: 16px;
+    color:white;
+  }
+
+  .blog-image-mobile {
+    border:none;
+    height: 100px;
+    width: fit-content;
+    border-radius: 20px;
+  }
+
+  .blog-heading-mobile {
+    font-family: copper plate;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: orange;
+  }
+  .blog-description-mobile {
+    font-family: copper plate;
+    font-size: 8px;
+    color:white;
+  }
+  .redirectLink{
+    font-family: copper plate;
+    color: red;
+  }
+@media (max-width: 768px) {
+    .desktop-only {
+      display: none;/*Hide on mobile*/
+    }
+  }
+  
+  @media (min-width: 769px) {
+    .mobile-only {
+      display: none; /* Hide on desktop */
+    }
+  }
