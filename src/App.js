@@ -1,10 +1,10 @@
 import React from 'react';
+import MainPage from './MainPage/MainPage';
+import ValorantGuidesPage from './ValorantGuidesPage/ValorantGuidesPage';
 
 function App() {
   return (
-    <div>
-      <h1>Hello, React!</h1>
-    </div>
+      <ValorantGuidesPage/>
   );
 }
 
