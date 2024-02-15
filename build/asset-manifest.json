@@ -1,10 +1,22 @@
 {
   "files": {
-    "main.js": "/occisors-den/static/js/main.8e038a9f.js",
+    "main.css": "/occisors-den/static/css/main.a36aa0ff.css",
+    "main.js": "/occisors-den/static/js/main.3c54c273.js",
+    "static/media/viperIcon.png": "/occisors-den/static/media/viperIcon.447e2d6a2da4a87f2513.png",
+    "static/media/SplitViperLineupGuide.png": "/occisors-den/static/media/SplitViperLineupGuide.69b69afa59b1447398ed.png",
+    "static/media/HeavenViperLineupGuide.png": "/occisors-den/static/media/HeavenViperLineupGuide.1f7e1a3f524daf0054ec.png",
+    "static/media/BreezeViperLineupGuide.png": "/occisors-den/static/media/BreezeViperLineupGuide.95105621a9bec62f0b4b.png",
+    "static/media/ascentViperLineupGuide.png": "/occisors-den/static/media/ascentViperLineupGuide.c2dfee02e968a4b46fe0.png",
+    "static/media/SunsetViperLineupGuide.png": "/occisors-den/static/media/SunsetViperLineupGuide.6284759cd5f3222fddb7.png",
+    "static/media/salesforceGuide1.png": "/occisors-den/static/media/salesforceGuide1.33845024521874542aef.png",
+    "static/media/createsalesforceaccount.jpg": "/occisors-den/static/media/createsalesforceaccount.bdad00ca54f41a096699.jpg",
+    "static/media/askyourself.jpg": "/occisors-den/static/media/askyourself.baf9050f826992d6e2b1.jpg",
     "index.html": "/occisors-den/index.html",
-    "main.8e038a9f.js.map": "/occisors-den/static/js/main.8e038a9f.js.map"
+    "main.a36aa0ff.css.map": "/occisors-den/static/css/main.a36aa0ff.css.map",
+    "main.3c54c273.js.map": "/occisors-den/static/js/main.3c54c273.js.map"
   },
   "entrypoints": [
-    "static/js/main.8e038a9f.js"
+    "static/css/main.a36aa0ff.css",
+    "static/js/main.3c54c273.js"
   ]
 }

@@ -38,6 +38,7 @@
     border-width: 2px;
     border-radius: 20px;
     border-color: orange;
+    position: relative;
   }
   .blog-image {
     border:none;
@@ -77,6 +78,20 @@
     font-family: copper plate;
     font-size: 8px;
     color:white;
+  }
+  .backHome-recentArticles{
+    background: transparent !important;
+    border: none;
+    color: orange;
+    font-size: larger;
+    position: absolute;
+    top: 40px;
+    right: 30px;
+    font-family: "Times New Roman", Times, serif;
+    cursor: pointer;
+    &:hover{
+      color: white;
+    }
   }
   .redirectLink{
     font-family: copper plate;

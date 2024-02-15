@@ -3,7 +3,7 @@ import { VIPER_GUIDE_DATA } from '../Services/Constants.ts';
 import './ValorantGuidesPage.css';
 import viperIcon from '../SrcImages/valorantSrcFiles/viperIcon.png';
 
-const ValorantGuidesPage = () => {
+const ValorantGuidesPage = ({pageCallback}) => {
     const [isOverlayVisible, setIsOverlayVisible] = useState(false);
     const [enlargedImageSrc, setEnlargedImageSrc] = useState('');
     const [guidesData, setGuidesData] = useState(VIPER_GUIDE_DATA);
@@ -49,12 +49,12 @@ const ValorantGuidesPage = () => {
                             Create Your Own Play Books...
                         </a>
                     </span>
-                    <button className="homeButton" onClick={() => { }} title="Home Page">
+                    <button className="homeButton" onClick={pageCallback} title="Home Page">
                         Back To Home
                     </button>
                 </div>
 
-                {guidesData.map((item) => (
+                {guidesData.map((item, index) => (
                     <div key={`lineup_map_${item.MapName}`} className="expandable-div">
                         <div className="expandable-div-header" onClick={() => expandClick(item.MapName)}>
                             <button className="width-button-desktop expandable-div-button">

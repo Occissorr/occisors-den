@@ -1,15 +1,18 @@
 import React from 'react';
 import './MainPage.css';
+import { PageIds } from '../Services/Constants.ts';
 
-const MainPage = () => {
+const MainPage = ({pageCallback}) => {
     const MediumUrl = 'https://natmotgobin.medium.com/';
     const InstagramUrl = 'https://www.instagram.com/occisorr/?utm_source=ig_web_button_share_sheet&igshid=OGQ5ZDc2ODk2ZA==';
-    const valorantGuidesPage = 'src/ValorantGuidesPage/ValorantGuidesPage.js';
-    const recentArticlesPage = 'src/RecentArticlesPage/RecentArticlesPage.js'
-    const openPage = (pageURL) => {
-        window.location.href = pageURL;
-    };
+    // const openPage = (pageURL) => {
+    //     window.location.href = pageURL;
+    // };
 
+    /**
+     * Opens a page in new tab with the given page url
+     * @param {*} url -> Page URL to open in a new tab
+     */
     const openLink = (url) => {
         window.open(url, '_blank');
     };
@@ -19,12 +22,12 @@ const MainPage = () => {
             <div className="mobile-only">
                 <div style={{ fontFamily: "copper plate", color: "orange" }}>
                     <h1 style={{ color: "White" }}>Occisor's Den</h1><br /><br /><br />
-                    <p style={{ marginLeft: "20px" }}><b>WELCOME TO THE DEN EVERYONE,</b> Feel free to check out my work from the below buttons. </p><br /><br /><br />
+                    <p style={{ marginLeft: "20px", color: "orange" }}><b>WELCOME TO THE DEN EVERYONE,</b> Feel free to check out my work from the below buttons. </p><br /><br /><br />
                     <div className="button-container-mobile">
-                        <button className="mobile-button" onClick={()=>{openPage(recentArticlesPage)}} title="Recent Articles">Recent Articles</button><br />
+                        <button className="mobile-button" onClick={()=>{pageCallback(PageIds.RecentArticlesPage)}} title="Recent Articles">Recent Articles</button><br />
                         <button className="mobile-button" onClick={()=>{openLink(MediumUrl)}} title="Medium" >Medium</button><br />
                         <button className="mobile-button" onClick={()=>{openLink(InstagramUrl)}} title="Instagram " >Instagram</button><br />
-                        <button className="mobile-button" onClick={()=>{openPage(valorantGuidesPage)}} title="Valorant Guides " >Valorant</button>
+                        <button className="mobile-button" onClick={()=>{pageCallback(PageIds.ValorantPage)}} title="Valorant Guides " >Valorant</button>
                     </div><br /><br /><br />
                 </div>
                 <hr />
@@ -49,18 +52,18 @@ const MainPage = () => {
                 <div style={{ fontFamily: 'copper plate', color: 'orange' }}>
                     <h1 style={{ color: 'white' }}>Occisor's Den</h1>
                     <br /><br /><br />
-                    <p style={{ marginLeft: '200px' }}>
+                    <p style={{ marginLeft: '200px', color: "orange" }}>
                         <b>WELCOME TO THE DEN EVERYONE,</b> Feel free to check out my work from the below buttons.
                     </p>
                     <br /><br /><br />
                     <div className="button-container">
-                        <button className="button" onClick={() => {openPage(recentArticlesPage)}} title="Recent Articles">Recent Articles</button>
+                        <button className="button" onClick={() => {pageCallback(PageIds.RecentArticlesPage)}} title="Recent Articles">Recent Articles</button>
                         <br />
                         <button className="button" onClick={() => {openLink(MediumUrl)}} title="Medium">Medium</button>
                         <br />
                         <button className="button" onClick={() => {openLink(InstagramUrl)}} title="Instagram">Instagram</button>
                         <br />
-                        <button className="button" onClick={() => {openPage(valorantGuidesPage)}} title="Valorant Guides">Valorant</button>
+                        <button className="button" onClick={() => {pageCallback(PageIds.ValorantPage)}} title="Valorant Guides">Valorant</button>
                     </div>
                     <br /><br /><br />
                 </div>
