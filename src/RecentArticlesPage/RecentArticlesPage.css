@@ -93,6 +93,9 @@
       color: white;
     }
   }
+  .recentArticlesPage_container{
+    background: linear-gradient(to right bottom, red, black, black);
+  }
   .redirectLink{
     font-family: copper plate;
     color: red;
@@ -106,5 +109,8 @@
   @media (min-width: 769px) {
     .mobile-only {
       display: none; /* Hide on desktop */
+      .backHome-recentArticles{
+        font-size: small;
+      }
     }
   }

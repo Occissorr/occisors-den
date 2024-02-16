@@ -173,6 +173,9 @@ a:hover {
     background-color: transparent;
     border: none;
 }
+.valorant-guides-page{
+    background: linear-gradient(to right bottom, rgb(3, 167, 3), black, black);
+  }
 
 .homeButton:hover {
     color: orange;

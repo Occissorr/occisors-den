@@ -18,7 +18,7 @@ const MainPage = ({pageCallback}) => {
     };
 
     return (
-        <div className="mainPage-container">
+        <div className="mainPage-container pg-p">
             <div className="mobile-only">
                 <div style={{ fontFamily: "copper plate", color: "orange" }}>
                     <h1 style={{ color: "White" }}>Occisor's Den</h1><br /><br /><br />

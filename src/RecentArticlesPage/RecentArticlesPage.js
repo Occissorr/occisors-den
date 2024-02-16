@@ -19,7 +19,7 @@ const RecentArticlesPage = ({pageCallback}) => {
 
 
     return (
-        <div className='recentArticlesPage_container'>
+        <div className='recentArticlesPage_container pg-p'>
             <div className="mobile-only">
             {Articles && Articles.map((article, index) => (
                 <div key={index} className="blog-post">

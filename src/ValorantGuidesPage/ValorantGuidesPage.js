@@ -30,7 +30,7 @@ const ValorantGuidesPage = ({pageCallback}) => {
     
 
     return (
-        <div className="valorant-guides-page">
+        <div className="valorant-guides-page pg-p">
             {isOverlayVisible && enlargedImageSrc && (
                 <div id="imageOverlay" className="overlay">
                     <img className="enlarged-image" alt="enlarged" src={enlargedImageSrc} />
@@ -87,7 +87,7 @@ const ValorantGuidesPage = ({pageCallback}) => {
                         <a href="https://valoplant.gg" className="color-viper">
                             Create Your Own Play Books...
                         </a>
-                        <button className="homeButton" onClick={() => { }} title="Home Page">
+                        <button className="homeButton" onClick={pageCallback} title="Home Page">
                             Back To Home
                         </button>
                     </span>

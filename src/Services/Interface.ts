@@ -1,11 +1,11 @@
 export interface MapElement {
     MapName : string;
-    ImageURL : string;
+    ImageURL : string | any;
     isVisible : boolean;
 }
 
 export interface ArticlePreview {
-    PreviewImage : string;
+    PreviewImage : string | any;
     ArticleLink : string;
     Heading : string;
     Description : string;

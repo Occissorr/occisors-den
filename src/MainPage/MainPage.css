@@ -30,7 +30,7 @@
     cursor: pointer;
     margin-bottom: 30px;
   }
-  body{
+  .mainPage-container{
     background: linear-gradient(to right bottom, red, black, black);
   }
   /* .bg-image {
