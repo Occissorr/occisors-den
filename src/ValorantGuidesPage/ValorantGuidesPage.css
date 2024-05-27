@@ -181,7 +181,43 @@ a:hover {
     color: orange;
     background-color: black;
 }
+.controller, .duelist, .sentinel, .initiator{
+    align-items: baseline;
+}
 
+.navigation-bar{
+    position: sticky;
+    margin-left: 90%;
+    top: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: fit-content;
+    align-items: flex-end;
+}
+.coaching{
+    width: -webkit-fill-available;
+    height: fit-content;
+}
+.dropdown{
+    float: left;
+    margin: 0px 20px;
+}
+.quiz-titles{
+    margin-left: 140px;
+}
+.quiz-submit{
+    width: 200px;
+    background: #03da81;
+    color: white;
+    height: 50px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: larger;
+    &:hover{
+        background: black;
+    }
+}
 @media (max-width: 768px) {
     .desktop-only {
         display: none;

@@ -1,5 +1,6 @@
 import { ArticlePreview, MapElement } from "./Interface";
 import ascentLineUpImage from '../SrcImages/valorantSrcFiles/ascentViperLineupGuide.png';
+import bindLineUpImage from '../SrcImages/valorantSrcFiles/BindViperLineupGuide.png'
 import breezeLineupImage from '../SrcImages/valorantSrcFiles/BreezeViperLineupGuide.png';
 import havenLineUpImage from '../SrcImages/valorantSrcFiles/HeavenViperLineupGuide.png';
 import splitLineUpImage from '../SrcImages/valorantSrcFiles/SplitViperLineupGuide.png';
@@ -13,10 +14,11 @@ import salesforceGuide1 from '../SrcImages/ArticleSrcFiles/salesforceGuide1.png'
 
 export const VIPER_GUIDE_DATA : MapElement[] = [
     { MapName: 'Ascent', ImageURL: await loadImageAsBase64(ascentLineUpImage), isVisible : false },
+    { MapName: 'Bind', ImageURL: await loadImageAsBase64(bindLineUpImage), isVisible : false },
     { MapName: 'Breeze', ImageURL: await loadImageAsBase64(breezeLineupImage), isVisible : false },
     { MapName: 'Haven', ImageURL: await loadImageAsBase64(havenLineUpImage), isVisible : false },
     { MapName: 'Split', ImageURL: await loadImageAsBase64(splitLineUpImage), isVisible : false },
-    { MapName: 'SunSet', ImageURL: await loadImageAsBase64(sunsetLineUpImage), isVisible : false }
+    { MapName: 'SunSet', ImageURL: await loadImageAsBase64(sunsetLineUpImage), isVisible : false },
 ];
 
 export const ARTICLES_PREVIEW: ArticlePreview[] = [
