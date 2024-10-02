@@ -8,7 +8,7 @@ const routes = [
 ];
 
 const generateSitemap = () => {
-    const baseUrl = 'https://occissorr.github.io'; // Replace with your GitHub Pages URL
+    const baseUrl = 'https://occissorr.github.io/occisors-den'; // Replace with your GitHub Pages URL
 
     const urls = routes.map(route => `
         <url>
