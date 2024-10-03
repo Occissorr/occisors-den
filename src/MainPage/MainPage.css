@@ -1,60 +1,117 @@
-.button:hover {
-    background-color: red; 
-    border-color: black; 
-  }
-  .BooksName{
-    color:red;
-  }
-  .button {
-      background-color: orange;
-      color: white;
-      font-size: larger;
-      font-weight: bolder;
-      height: 100px; width : 450px;
-      font-family: copper plate;
-      border-width: 10px;
-      border-color: white;
-      border-radius: 5px;
-      cursor: pointer;
-      margin-bottom: 30px;
-  }
-  .mobile-button {
-    background-color: orange;
-    color: white;
-    font-size: medium;
-    height: 50px; width : 200px;
-    font-family: copper plate;
-    border-width: 10px;
-    border-color: white;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-bottom: 30px;
-  }
-  .mainPage-container{
-    background: linear-gradient(to right bottom, red, black, black);
-  }
-  /* .bg-image {
-    background-image: url("LOGO wallpaper (3).png");
-    background-size:cover;
-  } */
-  .button-container {
-    font-family: copper plate;
-    justify-content: center;
-    margin-left: 33%;
-  }
-  .button-container-mobile {
-    font-family: copper plate;
-    justify-content: center;
-    margin-left: 65px;
-  }
+/* General Styles */
+.mainPage-container {
+  background: linear-gradient(to right bottom, #1a1a1a, #000000); /* Smoother dark gradient */
+  color: white;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+/* Buttons */
+.button, .mobile-button {
+  background-color: #ff9800; /* Lighter orange for better contrast */
+  color: white;
+  font-size: larger;
+  font-weight: bold;
+  font-family: "Copperplate", serif;
+  border: 2px solid #e64a19; /* Adjusted border for a sharper look */
+  border-radius: 8px; /* Slightly rounded edges for a modern look */
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.button{
+  height: 50px;
+  margin: 20px;
+  display: flex;
+  width: 350px;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+/* Hover Effects for Buttons */
+.button:hover, .mobile-button:hover {
+  background-color: #e64a19; /* Darker orange for a more dynamic hover effect */
+  border-color: black;
+  transform: scale(1.05); /* Slightly enlarges button on hover for better interaction */
+}
+
+/* Mobile Button Specifics */
+.mobile-button {
+  font-size: medium;
+  height: 50px; 
+  width: 220px;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  margin: 20px;
+  display: flex;
+}
+
+/* Books Links */
+.BooksName {
+  color: #ff5722; /* Slightly muted red to match the overall palette */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.BooksName:hover {
+  color: #ffccbc; /* A lighter color on hover for user engagement */
+  text-decoration: underline;
+}
+
+/* Containers */
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+}
+
+.button-container-mobile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 65px;
+}
+
+/* Responsive Layout */
 @media (max-width: 768px) {
-    .desktop-only {
+  .desktop-only {
       display: none; /* Hide on mobile */
-    }
   }
-  
-  @media (min-width: 769px) {
-    .mobile-only {
+  .mobile-only {
+      display: block;
+  }
+}
+
+@media (min-width: 769px) {
+  .mobile-only {
       display: none; /* Hide on desktop */
-    }
   }
+  .desktop-only {
+      display: block;
+  }
+}
+
+/* Section Breaks and Spacing */
+hr {
+  border-color: #ff9800;
+  width: 80%;
+  margin: 40px auto;
+}
+
+h1, h2 {
+  font-family: "Copperplate", serif;
+  color: #ff9800;
+  text-align: center;
+}
+
+p {
+  line-height: 1.6;
+  font-size: 1.1rem;
+  margin-left: 20px;
+}

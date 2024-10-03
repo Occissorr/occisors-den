@@ -1,116 +1,126 @@
-.overlay{
-    /* display: none; */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-  }
-  .enlarged-image {
-    max-width: 75%;
-    max-height: 75%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-  
-  .close-overlay {
-    position: absolute;
-    top: 55px;
-    right: 55px;
-    height: 35px;
-    border-radius: 20px;
-    font-size: 20px;
-    width: 35px;
-    background: red;
-    color: black;
-    border: none;
-  }
+.recentArticlesPage_container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
-  .blog-post {
-    font-family: copper plate;
-    border: 1px solid #ddd;
-    padding: 10px;
-    margin-bottom: 20px;
-    border-style:dashed;
-    border-width: 2px;
-    border-radius: 20px;
-    border-color: orange;
-    position: relative;
+.backHome {
+  position: fixed;
+  right: 0px;
+  height: 50px;
+  background-color: #ff9800; /* Lighter orange for better contrast */
+  color: white;
+  font-size: larger;
+  font-weight: bold;
+  font-family: "Copperplate", serif;
+  border: 2px solid #e64a19; /* Adjusted border for a sharper look */
+  border-radius: 8px; /* Slightly rounded edges for a modern look */
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s, transform 0.2s;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  margin:10px;
+  &:hover {
+    background-color: #e64a19; /* Darker orange for a more dynamic hover effect */
+    border-color: black;
+    transform: scale(1.05); /* Slightly enlarges button on hover for better interaction */
   }
-  .blog-image {
-    border:none;
-    height: 300px;
-    width: fit-content;
-    border-radius: 20px;
-  }
+}
 
-  .blog-heading {
-    font-family: copper plate;
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: orange;
-  }
-  .blog-description {
-    font-family: copper plate;
-    font-size: 16px;
-    color:white;
-  }
+.articles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
 
-  .blog-image-mobile {
-    border:none;
-    height: 100px;
-    width: fit-content;
-    border-radius: 20px;
-  }
+.article-card {
+  background-color: #222;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
 
-  .blog-heading-mobile {
-    font-family: copper plate;
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: orange;
-  }
-  .blog-description-mobile {
-    font-family: copper plate;
-    font-size: 8px;
-    color:white;
-  }
-  .backHome-recentArticles{
-    background: transparent !important;
-    border: none;
-    color: orange;
-    font-size: larger;
-    position: absolute;
-    top: 40px;
-    right: 30px;
-    font-family: "Times New Roman", Times, serif;
-    cursor: pointer;
-    &:hover{
-      color: white;
-    }
-  }
-  .recentArticlesPage_container{
-    background: linear-gradient(to right bottom, red, black, black);
-  }
-  .redirectLink{
-    font-family: copper plate;
-    color: red;
-  }
-@media (max-width: 768px) {
-    .desktop-only {
-      display: none;/*Hide on mobile*/
-    }
-  }
-  
-  @media (min-width: 769px) {
-    .mobile-only {
-      display: none; /* Hide on desktop */
-      .backHome-recentArticles{
-        font-size: small;
-      }
-    }
-  }
+.article-card:hover {
+  transform: scale(1.05);
+}
+
+.article-image-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-bottom: 4px solid #ff8c00;
+}
+
+.article-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.article-image:hover {
+  transform: scale(1.1);
+}
+
+.article-content {
+  padding: 15px;
+  color: #fff;
+}
+
+.article-heading {
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+  color: #ff8c00;
+}
+
+.article-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #ccc;
+  margin-bottom: 15px;
+}
+
+.article-link {
+  color: #ff8c00;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+.article-link:hover {
+  color: #fff;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.enlarged-image {
+  max-width: 90%;
+  max-height: 90%;
+}
+
+.close-overlay {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: white;
+  cursor: pointer;
+}

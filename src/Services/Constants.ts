@@ -58,9 +58,11 @@ export const ARTICLES_PREVIEW: ArticlePreview[] = [
 ];
 
 export const PageIds = {
-    RecentArticlesPage : 'recent-articles-page',
-    ValorantPage : 'valorant-page',
-}
+    MainPage: 'main',
+    ValorantPage: 'valorant',
+    RecentArticlesPage: 'recent-articles'
+};
+  
 async function loadImageAsBase64(url: string | URL | Request) {
     try {
         const response = await fetch(url);

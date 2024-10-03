@@ -1,233 +1,204 @@
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.overlay{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-  }
-  .enlarged-image {
-    max-width: 95%;
-    max-height: 95%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-  
-  .close-overlay {
-    position: absolute;
-    top: 55px;
-    right: 55px;
-    height: 35px;
-    border-radius: 20px;
-    font-size: 20px;
-    width: 35px;
-    background: red;
-    color: black;
-    border: none;
-    cursor: pointer;
-  }
+/* ValorantGuidesPage.css */
 
-.expandable-div {
-    width: 900px;
-    margin: 1rem;
-    padding: 1rem;
-    border: 1px solid rgb(55, 184, 43);
-    border-radius: 5px;
-    transition: 0.5s ease-in-out;
-    &:hover {
-        color: white;
-        background-color: rgb(255, 255, 255);
-    }
-}
-
-.flex-align-center{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: inherit;
-}
-
-.expandable-div-header h2 {
-    margin: 0;
-}
-
-.div-mob {
-    width: 310px;
-    padding-top: 20px;
-}
-
-.button-width-mob {
-    width: -webkit-fill-available;
-    gap: 210px !important;
-}
-
-.expandable-div-button {
-    border: none;
-    border-radius: 5px;
-    background-color: transparent;
-    cursor: pointer;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-}
-
-.width-button-desktop {
-    width: 900px;
-    gap: 700px;
-}
-.arrow-icon {
-    width: 0;
-    height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    margin-right: 5px;
-}
-
-.arrow-down {
-    border-top: 5px solid rgb(55, 184, 43);
-}
-
-.arrow-up {
-    border-bottom: 5px solid rgb(55, 184, 43);
-}
-
-.expandable-div-content-mob {
-    display: none;
-    max-height: 0;
-    overflow: hidden;
-    transition: all 0.5s;
-}
-
-.expandable-div-content.expanded {
-    max-height: 1000px;
-    display: block;
-    transition: 0.5s ease-in-out;
-}
-
-.expanded .expandable-div-content-mob {
-    max-height: 200px;
-}
-
-.expandable-div-content {
-    display: none;
-    max-height: 0;
-    overflow: hidden;
+.valorant-guides-page {
+    color: white;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
 }
 
 .container {
-    display: flex;
-}
-
-p,
-h2 {
-    color: rgb(55, 184, 43);
+    margin: auto;
+    max-width: 600px;
 }
 
 .topicIcon {
-    width: 25%;
+    width: 100px;
+    margin-bottom: 20px;
+}
+
+.homeButton {
+    background-color: #3A3A3A;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.homeButton:hover {
+    background-color: #555;
+}
+
+.expandable-div {
+    margin: 10px 0;
+}
+
+.expandable-div-header {
+    background-color: #2A2A2A;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.expandable-div-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    border: none;
+    background: none;
+    color: white;
+}
+
+.arrow-icon {
+    transition: transform 0.3s ease;
+}
+
+.arrow-up {
+    transform: rotate(180deg);
+}
+
+.expandable-div-content {
+    margin-top: 10px;
+}
+
+.guideImages-mob {
+    width: 100%;
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
 }
 
 .displayFlex-column {
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-evenly
+    flex-direction: column;
 }
 
 .displayFlex-row {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-evenly
+    justify-content: space-between;
+    margin-bottom: 15px;
 }
 
-.guideImages {
-    width: 900px;
+.roles-display {
+    margin-top: 20px;
 }
 
-.guideImages-mob {
-    width: 300px;
+.quiz-question {
+    margin: 5px 0;
 }
 
-.font-fam {
-    font-family: Copperplate, Papyrus, fantasy;
-}
-
-.color-viper {
-    color: rgb(55, 184, 43);
-}
-
-a:hover {
+.dropdown {
+    margin-left: 5px;
+    padding: 5px;
+    background-color: #3A3A3A;
     color: white;
-}
-
-.homeButton {
-    color: rgb(55, 184, 43);
-    background-color: transparent;
     border: none;
-}
-.valorant-guides-page{
-    background: linear-gradient(to right bottom, rgb(3, 167, 3), black, black);
-  }
-
-.homeButton:hover {
-    color: orange;
-    background-color: black;
-}
-.controller, .duelist, .sentinel, .initiator{
-    align-items: baseline;
+    border-radius: 3px;
+    cursor: pointer;
 }
 
-.navigation-bar{
-    position: sticky;
-    margin-left: 90%;
-    top: 50%;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: fit-content;
-    align-items: flex-end;
+.dropdown:hover {
+    background-color: #555;
 }
-.coaching{
-    width: -webkit-fill-available;
-    height: fit-content;
+
+.coaching {
+    background-color: #2A2A2A;
+    border-radius: 5px;
+    padding: 15px;
+    margin-top: 20px;
 }
-.dropdown{
-    float: left;
-    margin: 0px 20px;
+
+.coaching h1 {
+    margin-bottom: 15px;
 }
-.quiz-titles{
-    margin-left: 140px;
-}
-.quiz-submit{
-    width: 200px;
-    background: #03da81;
+
+.quiz-submit {
+    background-color: #4CAF50;
     color: white;
-    height: 50px;
-    border-radius: 10px;
-    font-weight: 700;
-    font-size: larger;
-    &:hover{
-        background: black;
-    }
-}
-@media (max-width: 768px) {
-    .desktop-only {
-        display: none;
-        /* Hide on mobile */
-    }
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background 0.3s ease;
 }
 
-@media (min-width: 769px) {
-    .mobile-only {
-        display: none;
-        /* Hide on desktop */
+.quiz-submit:hover {
+    background-color: #45a049;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.enlarged-image {
+    max-width: 90%;
+    max-height: 90%;
+    border: 5px solid white;
+    border-radius: 10px;
+}
+
+.close-overlay {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    background-color: #ff4444;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.close-overlay:hover {
+    background-color: #ff0000;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .valorant-guides-page {
+        padding: 10px;
+    }
+
+    .topicIcon {
+        width: 80px;
+    }
+
+    .homeButton,
+    .quiz-submit {
+        width: 100%;
+        padding: 8px;
+    }
+
+    .expandable-div-header {
+        padding: 8px;
+    }
+
+    .guideImages-mob {
+        margin-top: 5px;
+    }
+
+    .coaching {
+        padding: 10px;
+    }
+
+    .quiz-question {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .dropdown {
+        width: 100px;
     }
 }
