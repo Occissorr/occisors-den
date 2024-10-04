@@ -4,3 +4,29 @@
   padding: 20px;
   min-height: 100vh;
 }
+.backHome {
+  position: fixed;
+  right: 0px;
+  height: 35px;
+  background-color: #ff9800; /* Lighter orange for better contrast */
+  color: white;
+  font-size: larger;
+  font-weight: bold;
+  z-index: 20000;
+  font-family: "Copperplate", serif;
+  border: 2px solid #e64a19; /* Adjusted border for a sharper look */
+  border-radius: 8px; /* Slightly rounded edges for a modern look */
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s, transform 0.2s;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  margin:10px;
+  &:hover {
+    background-color: #e64a19; /* Darker orange for a more dynamic hover effect */
+    border-color: black;
+    transform: scale(1.05); /* Slightly enlarges button on hover for better interaction */
+  }
+}
