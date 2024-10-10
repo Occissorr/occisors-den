@@ -1,6 +1,7 @@
 import './RecentArticlesPage.css';
 import React, { useState } from 'react';
 import { ARTICLES_PREVIEW } from '../Services/Constants.ts';
+import ArticleTile from './ArticleTile/ArticleTile.js';
 
 const RecentArticlesPage = ({ pageCallback }) => {
     const Articles = ARTICLES_PREVIEW;
@@ -28,23 +29,11 @@ const RecentArticlesPage = ({ pageCallback }) => {
             )}
             <div className="articles-grid">
                 {Articles && Articles.map((article, index) => (
-                    <div key={index} className="article-card">
-                        <div className="article-image-wrapper">
-                            <img 
-                                className="article-image" 
-                                src={article?.PreviewImage} 
-                                alt="" 
-                                onClick={() => handleImageClick(article?.PreviewImage)}
-                            />
-                        </div>
-                        <div className="article-content">
-                            <h2 className="article-heading">{article?.Heading ?? 'Heading'}</h2>
-                            <p className="article-description">
-                                {article?.Description ?? 'Description'}
-                            </p>
-                            <a className="article-link" href={article?.ArticleLink}>Continue Reading...</a>
-                        </div>
-                    </div>
+                    <ArticleTile 
+                        key={index}
+                        article={article}
+                        handleImageClick={handleImageClick}
+                    />
                 ))}
             </div>
         </div>
