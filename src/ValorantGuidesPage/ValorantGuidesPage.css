@@ -154,8 +154,15 @@
 }
 
 /* Table for displaying quiz results */
+.results-table-wrapper{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    padding: 10px;
+}
+
 .results-table {
-    width: 100%;
+    width: 50%;
     border-collapse: collapse;
 }
 

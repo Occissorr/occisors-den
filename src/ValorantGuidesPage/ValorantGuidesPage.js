@@ -3,39 +3,43 @@ import { PageIds, VIPER_GUIDE_DATA } from '../Services/Constants.ts';
 import './ValorantGuidesPage.css';
 import viperIcon from '../SrcImages/valorantSrcFiles/viperIcon.png';
 
+const roleValues = [ 'Aim', 'Comms', 'Life Value', 'Preference'];
+const roles = [
+    { name: 'Controllers', data: roleValues },
+    { name: 'Duelists', data: roleValues },
+    { name: 'Sentinels', data: roleValues },
+    { name: 'Initiators', data: roleValues },
+];
+const quizOptionsData = ['High', 'Medium', 'Low'];
+const econPrefData = ['Gun', 'Utility'];
+const yesOrNO = ['Yes', 'No', 'Situational'];
+const initializeQuizData = () => {
+    const initialData = {};
+
+    roles.forEach((role) => {
+        initialData[role.name] = {};
+        role.data.forEach((value) => {
+            // Assign default values based on the type of the field
+            if (value === 'Preference') {
+                initialData[role.name][value] = econPrefData[0]; // default to first item of econPrefData
+            } else if (value === 'Life Value') {
+                initialData[role.name][value] = yesOrNO[0]; // default to first item of yesOrNO
+            } else {
+                initialData[role.name][value] = quizOptionsData[0]; // default to first item of quizOptionsData
+            }
+        });
+    });
+
+    return initialData;
+};
+
 const ValorantGuidesPage = ({ pageCallback }) => {
-    const roles = [
-        { name: 'Controllers', data: ['controllerAim', 'controllerComms', 'controllerLifeVal', 'controllerWeapons'] },
-        { name: 'Duelists', data: ['duelistAim', 'duelistComms', 'duelistLifeVal', 'duelistWeapons'] },
-        { name: 'Sentinels', data: ['sentinelAim', 'sentinelComms', 'sentinelLifeVal', 'sentinelWeapons'] },
-        { name: 'Initiators', data: ['initiatorAim', 'initiatorComms', 'initiatorLifeVal', 'initiatorWeapons'] },
-    ];
 
     const [isOverlayVisible, setIsOverlayVisible] = useState(false);
     const [enlargedImageSrc, setEnlargedImageSrc] = useState('');
     const [guidesData, setGuidesData] = useState(VIPER_GUIDE_DATA);
-    const quizOptionsData = ['High', 'Medium', 'Low'];
-    const econPrefData = ['Gun', 'Utility'];
-    const yesOrNO = ['Yes', 'No', 'Situational'];
     const [quizShow, setQuizShow] = useState(true);
-    const [QuizData, setQuizData] = useState({
-        controllerAim: quizOptionsData[0],
-        controllerComms: quizOptionsData[0],
-        controllerWeapons: econPrefData[0],
-        controllerLifeVal: yesOrNO[0],
-        duelistAim: quizOptionsData[0],
-        duelistComms: quizOptionsData[0],
-        duelistWeapons: econPrefData[0],
-        duelistLifeVal: yesOrNO[0],
-        sentinelAim: quizOptionsData[0],
-        sentinelComms: quizOptionsData[0],
-        sentinelWeapons: econPrefData[0],
-        sentinelLifeVal: yesOrNO[0],
-        initiatorAim: quizOptionsData[0],
-        initiatorComms: quizOptionsData[0],
-        initiatorWeapons: econPrefData[0],
-        initiatorLifeVal: yesOrNO[0],
-    });
+    const [QuizData, setQuizData] = useState(initializeQuizData());
 
     const handleImageClick = (imageSrc) => {
         setEnlargedImageSrc(imageSrc);
@@ -62,15 +66,18 @@ const ValorantGuidesPage = ({ pageCallback }) => {
         }
     };
 
-    const onQuizOptionSelect = (item, name) => {
-        if (item?.target?.value && name !== '') {
-            setQuizData({ ...QuizData, [name]: item.target.value });
-        }
+    const onQuizOptionSelect = (item, role, value) => {
+        setQuizData((prevData) => ({
+            ...prevData,
+            [role]: {
+                ...prevData[role],
+                [value]: item.target.value
+            }
+        }));
     };
 
     const quizSubmit = () => {
-        setQuizShow(false);
-        console.log(QuizData);
+        setQuizShow(!quizShow);
     };
 
     const backToHome = () => {
@@ -119,7 +126,6 @@ const ValorantGuidesPage = ({ pageCallback }) => {
                         )}
                     </div>
                 ))}
-
                 {quizShow ? (
                     <div id="coaching" className="quiz-section">
                         <h1>Free Coaching</h1>
@@ -136,12 +142,11 @@ const ValorantGuidesPage = ({ pageCallback }) => {
                                     {role.data.map((field) => (
                                         <div className="quiz-question" key={field}>
                                             <select
-                                                onChange={(item) => onQuizOptionSelect(item, field)}
-                                                value={QuizData[field]}
+                                                onChange={(item) => onQuizOptionSelect(item, role.name, field)}
+                                                value={QuizData[role.name][field]} // Accessing based on role and field
                                                 className="dropdown"
                                             >
-                                                {field.includes('LifeVal') ? yesOrNO : field.includes('Weapons') ? econPrefData : quizOptionsData}
-                                                {quizOptionsData.map((option) => (
+                                                {(field === 'Life Value' ? yesOrNO : field === 'Weapons' ? econPrefData : quizOptionsData).map((option) => (
                                                     <option key={option} value={option}>{option}</option>
                                                 ))}
                                             </select>
@@ -151,29 +156,32 @@ const ValorantGuidesPage = ({ pageCallback }) => {
                             </div>
                         ))}
                         <button className="quiz-submit" onClick={quizSubmit}>Submit</button>
-                                                </div>
-                                            ) : (
-                        <div className="results-section">
-                            <h1>Coaching Results</h1>
-                            {roles.map((role) => (
-                                <div className="result-role-section" key={role.name}>
-                                    <h3>{role.name.toUpperCase()}</h3>
+                    </div>
+                ) : (
+                    <div className="results-section">
+                        <h1>Coaching Results</h1>
+                        {roles.map((role) => (
+                            <div className="result-role-section" key={role.name}>
+                                <h3>{role.name.toUpperCase()}</h3>
+                                <div className='results-table-wrapper'>
                                     <table className="results-table">
                                         <tbody>
                                             {role.data.map((field) => (
                                                 <tr key={field}>
-                                                    <td className="result-label">
-                                                        <strong>{field.replace(/([A-Z])/g, ' $1')}:</strong>
-                                                    </td>
-                                                    <td className="result-value">{QuizData[field]}</td>
-                                                </tr>
+                                                <td className="result-label">
+                                                    <strong>{field.replace(/([A-Z])/g, ' $1')}:</strong>
+                                                </td>
+                                                <td className="result-value">{QuizData[role.name][field]}</td>
+                                            </tr>
                                             ))}
                                         </tbody>
                                     </table>
                                 </div>
-                            ))}
-                        </div>
-                    )}
+                            </div>
+                        ))}
+                        <button className="quiz-submit" onClick={quizSubmit}>Retake</button>
+                    </div>
+                )}
             </header>
         </div>
     );
