@@ -71,3 +71,18 @@ export const PageIds = {
     ValorantPage: 'valorant',
     RecentArticlesPage: 'recent-articles'
 };
+
+export const quizOptionsData = ['High', 'Medium', 'Low'];
+
+export const econPrefData = ['Gun', 'Utility'];
+
+export const yesOrNO = ['Yes', 'No', 'Situational'];
+
+export const roleValues = [ 'Aim', 'Comms', 'Life Value', 'Preference'];
+
+export const roles = [
+    { name: 'Controllers', data: roleValues },
+    { name: 'Duelists', data: roleValues },
+    { name: 'Sentinels', data: roleValues },
+    { name: 'Initiators', data: roleValues },
+];

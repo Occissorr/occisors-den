@@ -1,18 +1,13 @@
 import React, { useState } from 'react';
-import { PageIds, VIPER_GUIDE_DATA } from '../Services/Constants.ts';
+import { PageIds, VIPER_GUIDE_DATA, roles, quizOptionsData,
+    econPrefData, yesOrNO
+ } from '../Services/Constants.ts';
 import './ValorantGuidesPage.css';
 import viperIcon from '../SrcImages/valorantSrcFiles/viperIcon.png';
+import MapComponent from './MapComponent/MapComponent.js';
+import QuizComponent from './QuizComponent/QuizComponent.js';
+import QuizResultComponent from './QuizResultComponent/QuizResultComponent.js';
 
-const roleValues = [ 'Aim', 'Comms', 'Life Value', 'Preference'];
-const roles = [
-    { name: 'Controllers', data: roleValues },
-    { name: 'Duelists', data: roleValues },
-    { name: 'Sentinels', data: roleValues },
-    { name: 'Initiators', data: roleValues },
-];
-const quizOptionsData = ['High', 'Medium', 'Low'];
-const econPrefData = ['Gun', 'Utility'];
-const yesOrNO = ['Yes', 'No', 'Situational'];
 const initializeQuizData = () => {
     const initialData = {};
 
@@ -84,13 +79,6 @@ const ValorantGuidesPage = ({ pageCallback }) => {
         pageCallback(PageIds.MainPage);
     };
 
-    const LazyLoadImage = (item) => (
-        <img onClick={() => handleImageClick(item.ImageURL)}
-            alt={`Viper ${item.MapName} lineups`}
-            className="guideImages"
-            src={item.ImageURL} loading="lazy" />
-    );
-
     return (
         <div className="valorant-guides-page pg-p">
             <button className="backHome" onClick={backToHome}>Back To Home</button>
@@ -114,17 +102,12 @@ const ValorantGuidesPage = ({ pageCallback }) => {
                 </div>
 
                 {guidesData.map((item) => (
-                    <div key={`lineup_map_${item.MapName}`} className="expandable-div">
-                        <div className="expandable-div-header" onClick={(args) => expandClick(item.MapName, args)}>
-                            <h2 className="font-fam">{item.MapName}</h2>
-                            <span className={`arrow-icon ${item.isVisible ? 'arrow-up' : 'arrow-down'}`}></span>
-                        </div>
-                        {item.isVisible && (
-                            <div className="expandable-div-content">
-                                {LazyLoadImage(item)}
-                            </div>
-                        )}
-                    </div>
+                    <MapComponent
+                            key={item.MapName}
+                            expandClick={expandClick}
+                            item={item}
+                            handleImageClick={handleImageClick}
+                    />
                 ))}
                 {quizShow ? (
                     <div id="coaching" className="quiz-section">
@@ -136,48 +119,24 @@ const ValorantGuidesPage = ({ pageCallback }) => {
                             <h2>Life Value Importance</h2>
                         </div>
                         {roles.map((role) => (
-                            <div className="role-section" key={role.name}>
-                                <h3 className="role-title">{role.name}</h3>
-                                <div className="role-questions">
-                                    {role.data.map((field) => (
-                                        <div className="quiz-question" key={field}>
-                                            <select
-                                                onChange={(item) => onQuizOptionSelect(item, role.name, field)}
-                                                value={QuizData[role.name][field]} // Accessing based on role and field
-                                                className="dropdown"
-                                            >
-                                                {(field === 'Life Value' ? yesOrNO : field === 'Weapons' ? econPrefData : quizOptionsData).map((option) => (
-                                                    <option key={option} value={option}>{option}</option>
-                                                ))}
-                                            </select>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
+                            <QuizComponent
+                                key={role.name}
+                                role={role}
+                                onQuizOptionSelect={onQuizOptionSelect}
+                                QuizData={QuizData}
+                            />
                         ))}
                         <button className="quiz-submit" onClick={quizSubmit}>Submit</button>
                     </div>
                 ) : (
-                    <div className="results-section">
+                    <div id="coaching" className="results-section">
                         <h1>Coaching Results</h1>
                         {roles.map((role) => (
-                            <div className="result-role-section" key={role.name}>
-                                <h3>{role.name.toUpperCase()}</h3>
-                                <div className='results-table-wrapper'>
-                                    <table className="results-table">
-                                        <tbody>
-                                            {role.data.map((field) => (
-                                                <tr key={field}>
-                                                <td className="result-label">
-                                                    <strong>{field.replace(/([A-Z])/g, ' $1')}:</strong>
-                                                </td>
-                                                <td className="result-value">{QuizData[role.name][field]}</td>
-                                            </tr>
-                                            ))}
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
+                            <QuizResultComponent
+                                key={role.name}
+                                role={role}
+                                QuizData={QuizData}
+                            />
                         ))}
                         <button className="quiz-submit" onClick={quizSubmit}>Retake</button>
                     </div>

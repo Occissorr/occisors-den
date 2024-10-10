@@ -175,7 +175,7 @@
 /* Table result value (e.g., High, Medium, etc.) */
 .result-value {
     padding: 10px;
-    text-align: left;
+    text-align: right;
 }
 
 /* Submit button styling */
@@ -196,6 +196,10 @@
 /* Hover effect for submit button */
 .quiz-submit:hover {
     background-color: #d2f5e3; /* Lighter green on hover */
+}
+
+.topicIcon{
+    height: 300px;
 }
 
 /* Responsive adjustments */
