@@ -77,6 +77,13 @@ const ValorantGuidesPage = ({ pageCallback }) => {
         pageCallback(PageIds.MainPage);
     };
 
+    const LazyLoadImage = (item) => (
+        <img onClick={() => handleImageClick(item.ImageURL)}
+            alt={`Viper ${item.MapName} lineups`}
+            className="guideImages"
+            src={item.ImageURL} loading="lazy" />
+    );
+
     return (
         <div className="valorant-guides-page pg-p">
             <button className="backHome" onClick={backToHome}>Back To Home</button>
@@ -107,12 +114,7 @@ const ValorantGuidesPage = ({ pageCallback }) => {
                         </div>
                         {item.isVisible && (
                             <div className="expandable-div-content">
-                                <img
-                                    onClick={() => handleImageClick(item.ImageURL)}
-                                    alt={`Viper ${item.MapName} lineups`}
-                                    className="guideImages"
-                                    src={item.ImageURL}
-                                />
+                                {LazyLoadImage(item)}
                             </div>
                         )}
                     </div>
