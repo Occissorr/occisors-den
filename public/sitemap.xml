@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap-image/1.1">
+    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
         
         <url>
-            <loc>https://occissorr.github.io/occisors-den/</loc>
+            <loc>https://occisors-den.onrender.com/</loc>
+            <changefreq>monthly</changefreq>
+        </url>
+    
+        <url>
+            <loc>https://occisors-den.onrender.com/valorant</loc>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
+            <loc>https://occisors-den.onrender.com/recent-articles</loc>
             <changefreq>monthly</changefreq>
         </url>
     
