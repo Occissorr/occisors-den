@@ -23,3 +23,4 @@ yarn-error.log*
 package-lock.json
 src/personalNotes.txt
 server.js
+sitemap-generator.js
