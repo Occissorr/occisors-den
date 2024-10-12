@@ -95,54 +95,66 @@ const ValorantGuidesPage = ({ pageCallback }) => {
             </nav>
 
             <header className="container">
-                <div id="map-guides" className="header-section">
-                    <h1 className="title">Viper LineUps Play Book</h1>
-                    <img className="topicIcon" src={viperIcon} alt="Viper Icon" />
-                    <a href="https://valoplant.gg" className="link">Create Your Own Play Books...</a>
-                </div>
+            <div id="map-guides" className="header-section">
+                <h1 className="title">Viper LineUps Play Book</h1>
+                <img 
+                    className="topicIcon" 
+                    src={viperIcon} 
+                    alt="Viper lineup strategies and guides at Occisor's Den - free Valorant coaching" 
+                />
+                <a 
+                    href="https://valoplant.gg" 
+                    className="link" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    aria-label="Create your own playbooks on Valoplant.gg"
+                >
+                    Create Your Own Play Books...
+                </a>
+            </div>
 
-                {guidesData.map((item) => (
-                    <MapComponent
-                            key={item.MapName}
-                            expandClick={expandClick}
-                            item={item}
-                            handleImageClick={handleImageClick}
-                    />
-                ))}
-                {quizShow ? (
-                    <div id="coaching" className="quiz-section">
-                        <h1>Free Coaching</h1>
-                        <div className="quiz-titles">
-                            <h2>Aim</h2>
-                            <h2>Comms</h2>
-                            <h2>Economy Preference</h2>
-                            <h2>Life Value Importance</h2>
-                        </div>
-                        {roles.map((role) => (
-                            <QuizComponent
-                                key={role.name}
-                                role={role}
-                                onQuizOptionSelect={onQuizOptionSelect}
-                                QuizData={QuizData}
-                            />
-                        ))}
-                        <button className="quiz-submit" onClick={quizSubmit}>Submit</button>
+            {guidesData.map((item) => (
+                <MapComponent
+                        key={item.MapName}
+                        expandClick={expandClick}
+                        item={item}
+                        handleImageClick={handleImageClick}
+                />
+            ))}
+            {quizShow ? (
+                <div id="coaching" className="quiz-section">
+                    <h1>Free Coaching</h1>
+                    <div className="quiz-titles">
+                        <h2>Aim</h2>
+                        <h2>Comms</h2>
+                        <h2>Economy Preference</h2>
+                        <h2>Life Value Importance</h2>
                     </div>
-                ) : (
-                    <div id="coaching" className="results-section">
-                        <h1>Coaching Results</h1>
-                        {roles.map((role) => (
-                            <QuizResultComponent
-                                key={role.name}
-                                role={role}
-                                QuizData={QuizData}
-                            />
-                        ))}
-                        <button className="quiz-submit" onClick={quizSubmit}>Retake</button>
-                    </div>
-                )}
-            </header>
-        </div>
+                    {roles.map((role) => (
+                        <QuizComponent
+                            key={role.name}
+                            role={role}
+                            onQuizOptionSelect={onQuizOptionSelect}
+                            QuizData={QuizData}
+                        />
+                    ))}
+                    <button className="quiz-submit" onClick={quizSubmit}>Submit</button>
+                </div>
+            ) : (
+                <div id="coaching" className="results-section">
+                    <h1>Coaching Results</h1>
+                    {roles.map((role) => (
+                        <QuizResultComponent
+                            key={role.name}
+                            role={role}
+                            QuizData={QuizData}
+                        />
+                    ))}
+                    <button className="quiz-submit" onClick={quizSubmit}>Retake</button>
+                </div>
+            )}
+        </header>
+    </div>
     );
 };
 
