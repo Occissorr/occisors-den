@@ -1,0 +1,87 @@
+.floating-help-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: #1a4d36; /* Dark green to match Viper theme */
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 50px;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.floating-help-icon:hover {
+    background-color: #2f5e47; /* Slightly lighter green on hover */
+    transform: scale(1.1);
+}
+
+.floating-help-icon .hover-text {
+    display: none;
+    position: absolute;
+    right: 70px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #2f5e47;
+    padding: 10px 15px;
+    border-radius: 4px;
+    font-size: 14px;
+    color: white;
+    white-space: nowrap;
+}
+
+.floating-help-icon:hover .hover-text {
+    display: block;
+}
+
+.help-items {
+    position: absolute;
+    bottom: 80px;
+    right: 20px;
+    background-color: #2f5e47;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    display: none;
+}
+
+.help-items.active {
+    display: block;
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+}
+
+/*FAQ Item Styles*/
+.faq-item {
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.faq-question {
+    font-weight: bold;
+    color: #ff9800;
+}
+
+.faq-answer {
+    margin-top: 5px;
+    padding-left: 10px;
+    color: #c9ffc9; /* Light green for answers */
+}
+
+.arrow-icon {
+    float: right;
+    transition: transform 0.3s ease;
+}
+
+.arrow-up {
+    transform: rotate(180deg);
+}
+
+.arrow-down {
+    transform: rotate(0deg);
+}

@@ -202,6 +202,39 @@
     height: 300px;
 }
 
+/* Discord Icon styles */
+.discord-join-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.discord-link {
+    text-decoration: none;
+}
+
+.discord-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    border: 3px solid #5865F2; /* Discord blue */
+}
+
+.discord-icon:hover {
+    transform: scale(1.1);
+}
+
+.discord-cta {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #5865F2; /* Discord blue */
+    font-weight: bold;
+    text-align: center;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .role-questions {

@@ -7,6 +7,8 @@ import viperIcon from '../SrcImages/valorantSrcFiles/viperIcon.png';
 import MapComponent from './MapComponent/MapComponent.js';
 import QuizComponent from './QuizComponent/QuizComponent.js';
 import QuizResultComponent from './QuizResultComponent/QuizResultComponent.js';
+import discordIcon from '../SrcImages/discord-icon.png';
+import FloatingHelpComponent from './FloatingHelpComponent/FloatingHelpComponent.js';
 
 const initializeQuizData = () => {
     const initialData = {};
@@ -94,67 +96,78 @@ const ValorantGuidesPage = ({ pageCallback }) => {
                 <a href="#" onClick={(e) => handleNavigationClick(e, 'coaching')} className="nav-link">Coaching</a>
             </nav>
 
-            <header className="container">
-            <div id="map-guides" className="header-section">
-                <h1 className="title">Viper LineUps Play Book</h1>
-                <img 
-                    className="topicIcon" 
-                    src={viperIcon} 
-                    alt="Viper lineup strategies and guides at Occisor's Den - free Valorant coaching" 
-                />
-                <a 
-                    href="https://valoplant.gg" 
-                    className="link" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    aria-label="Create your own playbooks on Valoplant.gg"
-                >
-                    Create Your Own Play Books...
+            <div className='discord-join-section'>
+                <a href="https://discord.com/invite/BY9A9x53U2" target="_blank" rel="noopener noreferrer" className="discord-link">
+                    <img alt="Join Occisor's Den Discord server for free Valorant coaching" src={discordIcon} className="discord-icon" />
                 </a>
+                <p className="discord-cta">Join our Discord for Free Coaching and Exclusive Viper Lineups!</p>
             </div>
 
-            {guidesData.map((item) => (
-                <MapComponent
-                        key={item.MapName}
-                        expandClick={expandClick}
-                        item={item}
-                        handleImageClick={handleImageClick}
-                />
-            ))}
-            {quizShow ? (
-                <div id="coaching" className="quiz-section">
-                    <h1>Free Coaching</h1>
-                    <div className="quiz-titles">
-                        <h2>Aim</h2>
-                        <h2>Comms</h2>
-                        <h2>Economy Preference</h2>
-                        <h2>Life Value Importance</h2>
+            <div>
+                <FloatingHelpComponent />
+            </div>
+
+            <header className="container">
+                <div id="map-guides" className="header-section">
+                    <h1 className="title">Viper LineUps Play Book</h1>
+                    <img 
+                        className="topicIcon" 
+                        src={viperIcon} 
+                        alt="Viper lineup strategies and guides at Occisor's Den - free Valorant coaching" 
+                    />
+                    <a 
+                        href="https://valoplant.gg" 
+                        className="link" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        aria-label="Create your own playbooks on Valoplant.gg"
+                    >
+                        Create Your Own Play Books...
+                    </a>
+                </div>
+
+                {guidesData.map((item) => (
+                    <MapComponent
+                            key={item.MapName}
+                            expandClick={expandClick}
+                            item={item}
+                            handleImageClick={handleImageClick}
+                    />
+                ))}
+                {quizShow ? (
+                    <div id="coaching" className="quiz-section">
+                        <h1>Free Coaching</h1>
+                        <div className="quiz-titles">
+                            <h2>Aim</h2>
+                            <h2>Comms</h2>
+                            <h2>Economy Preference</h2>
+                            <h2>Life Value Importance</h2>
+                        </div>
+                        {roles.map((role) => (
+                            <QuizComponent
+                                key={role.name}
+                                role={role}
+                                onQuizOptionSelect={onQuizOptionSelect}
+                                QuizData={QuizData}
+                            />
+                        ))}
+                        <button className="quiz-submit" onClick={quizSubmit}>Submit</button>
                     </div>
-                    {roles.map((role) => (
-                        <QuizComponent
-                            key={role.name}
-                            role={role}
-                            onQuizOptionSelect={onQuizOptionSelect}
-                            QuizData={QuizData}
-                        />
-                    ))}
-                    <button className="quiz-submit" onClick={quizSubmit}>Submit</button>
-                </div>
-            ) : (
-                <div id="coaching" className="results-section">
-                    <h1>Coaching Results</h1>
-                    {roles.map((role) => (
-                        <QuizResultComponent
-                            key={role.name}
-                            role={role}
-                            QuizData={QuizData}
-                        />
-                    ))}
-                    <button className="quiz-submit" onClick={quizSubmit}>Retake</button>
-                </div>
-            )}
-        </header>
-    </div>
+                ) : (
+                    <div id="coaching" className="results-section">
+                        <h1>Coaching Results</h1>
+                        {roles.map((role) => (
+                            <QuizResultComponent
+                                key={role.name}
+                                role={role}
+                                QuizData={QuizData}
+                            />
+                        ))}
+                        <button className="quiz-submit" onClick={quizSubmit}>Retake</button>
+                    </div>
+                )}
+            </header>
+        </div>
     );
 };
 
