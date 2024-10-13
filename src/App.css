@@ -6,7 +6,7 @@
 }
 .backHome {
   position: fixed;
-  right: 0px;
+  right: 20px;
   height: 35px;
   background-color: #ff9800; /* Lighter orange for better contrast */
   color: white;
