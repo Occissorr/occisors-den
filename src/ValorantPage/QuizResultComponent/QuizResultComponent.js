@@ -1,5 +1,5 @@
 import React from 'react';
-import '../ValorantGuidesPage.css';
+import '../ValorantPage.css';
 
 const QuizResultComponent = ({ role, QuizData }) =>{
 

@@ -1,4 +1,4 @@
-import { ArticlePreview, MapElement } from "./Interface";
+import { Article, MapElement } from "./Interface";
 import ascentLineUpImage from '../SrcImages/valorantSrcFiles/ascentViperLineupGuide.png'; // Use WebP for optimized image
 import bindLineUpImage from '../SrcImages/valorantSrcFiles/BindViperLineupGuide.png';
 import breezeLineupImage from '../SrcImages/valorantSrcFiles/BreezeViperLineupGuide.png';
@@ -22,8 +22,9 @@ export const VIPER_GUIDE_DATA: MapElement[] = [
 ];
 
 // Articles Preview Data
-export const ARTICLES_PREVIEW: ArticlePreview[] = [
+export const ARTICLES_PREVIEW: Article[] = [
     {
+        id: 0,
         PreviewImage: whyLonely,
         ArticleLink:'https://natmotgobin.medium.com/why-are-you-lonely-9fc158388c58',
         Heading: 'Why Are You Lonely?',
@@ -31,22 +32,25 @@ export const ARTICLES_PREVIEW: ArticlePreview[] = [
         Why should I be always left out? Am I boring? Am I made to be…`,
     },
     {
+        id: 1,
         PreviewImage: salesforceGuide1,
         ArticleLink: 'https://medium.com/@natmotgobin/getting-started-with-salesforce-a-brief-walkthrough-f7c2bb6073ca',
         Heading: 'Getting Started With Salesforce: A Brief Walkthrough',
         Description: `The developer console will redirect you to the CLI where you can start
         coding and explore the class files in Salesforce whereas, the setup will take
-        you to the page where you can change the settings for your entire Salesforce....`
+        you to the page where you can change the settings for your entire Salesforce....`,
     },
     {
+        id: 2,
         PreviewImage: salesforceVisualForcePage,
         ArticleLink: 'https://natmotgobin.medium.com/visual-force-pages-in-salesforce-94149a4fd9be',
         Heading: 'What is a VisualForce page',
         Description: `Visualforce is a web development framework that allows developers to build custom user interfaces for Salesforce applications.
         It is a part of the Salesforce platform and enables developers to create pages using a markup language similar to HTML,
-        combined with a set of tags and controllers to access data and perform actions....`
+        combined with a set of tags and controllers to access data and perform actions....`,
     },
     {
+        id: 3,
         PreviewImage: createsalesforceaccount,
         ArticleLink: 'https://natmotgobin.medium.com/how-to-create-a-salesforce-account-686c3ab0a7a2',
         Heading: 'How to create a Salesforce account',
@@ -56,6 +60,7 @@ export const ARTICLES_PREVIEW: ArticlePreview[] = [
         Follow this link that redirects you to the official Salesforce site, Salesforce Developer Community...`
     },
     {
+        id: 4,
         PreviewImage: askYourselfImage,
         ArticleLink: 'https://natmotgobin.medium.com/3-things-you-need-to-ask-yourself-to-judge-your-personality-efa4b905bddb',
         Heading: '3 Things You Need To Ask Yourself To Judge Your Personality',

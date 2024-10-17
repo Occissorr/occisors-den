@@ -1,12 +1,12 @@
 import { React, useEffect} from 'react';
 import { Route, Routes, Navigate, useNavigate, useLocation  } from 'react-router-dom';
-import MainPage from './MainPage/MainPage';
-import ValorantGuidesPage from './ValorantGuidesPage/ValorantGuidesPage';
-import RecentArticlesPage from './RecentArticlesPage/RecentArticlesPage';
+import MainPage from './HomePage/HomePage.js';
+import ValorantGuidesPage from './ValorantPage/ValorantPage.js';
+import RecentArticlesPage from './ArticlesPage/ArticlesPage.js';
 import './App.css'
 
 const PageIds = {
-  MainPage: 'main',
+  MainPage: 'home',
   ValorantPage: 'valorant',
   RecentArticlesPage: 'recent-articles'
 };

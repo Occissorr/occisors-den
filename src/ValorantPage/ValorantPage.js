@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { PageIds, VIPER_GUIDE_DATA, roles, quizOptionsData,
     econPrefData, yesOrNO
  } from '../Services/Constants.ts';
-import './ValorantGuidesPage.css';
+import './ValorantPage.css';
 import viperIcon from '../SrcImages/valorantSrcFiles/viperIcon.png';
 import MapComponent from './MapComponent/MapComponent.js';
 import QuizComponent from './QuizComponent/QuizComponent.js';
@@ -30,7 +30,7 @@ const initializeQuizData = () => {
     return initialData;
 };
 
-const ValorantGuidesPage = ({ pageCallback }) => {
+const ValorantPage = ({ pageCallback }) => {
 
     const [isOverlayVisible, setIsOverlayVisible] = useState(false);
     const [enlargedImageSrc, setEnlargedImageSrc] = useState('');
@@ -92,8 +92,8 @@ const ValorantGuidesPage = ({ pageCallback }) => {
             )}
 
             <nav className="navigation-bar">
-                <a href="#" onClick={(e) => handleNavigationClick(e, 'map-guides')} className="nav-link">Lineup Guides</a>
-                <a href="#" onClick={(e) => handleNavigationClick(e, 'coaching')} className="nav-link">Coaching</a>
+                <button onClick={(e) => handleNavigationClick(e, 'map-guides')} className="nav-link">Lineup Guides</button>
+                <button onClick={(e) => handleNavigationClick(e, 'coaching')} className="nav-link">Coaching</button>
             </nav>
 
             <div className='discord-join-section'>
@@ -171,4 +171,4 @@ const ValorantGuidesPage = ({ pageCallback }) => {
     );
 };
 
-export default ValorantGuidesPage;
+export default ValorantPage;

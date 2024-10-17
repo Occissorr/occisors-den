@@ -1,9 +1,9 @@
-import './RecentArticlesPage.css';
+import './ArticlesPage.css';
 import React, { useState } from 'react';
 import { ARTICLES_PREVIEW } from '../Services/Constants.ts';
 import ArticleTile from './ArticleTile/ArticleTile.js';
 
-const RecentArticlesPage = ({ pageCallback }) => {
+const ArticlesPage = ({ pageCallback }) => {
     const Articles = ARTICLES_PREVIEW;
 
     const [isOverlayVisible, setIsOverlayVisible] = useState(false);
@@ -28,9 +28,9 @@ const RecentArticlesPage = ({ pageCallback }) => {
                 </div>
             )}
             <div className="articles-grid">
-                {Articles && Articles.map((article, index) => (
+                {Articles && Articles.map((article) => (
                     <ArticleTile 
-                        key={index}
+                        key={article.id}
                         article={article}
                         handleImageClick={handleImageClick}
                     />
@@ -40,4 +40,4 @@ const RecentArticlesPage = ({ pageCallback }) => {
     );
 };
 
-export default RecentArticlesPage;
+export default ArticlesPage;

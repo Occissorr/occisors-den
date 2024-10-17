@@ -24,3 +24,4 @@ package-lock.json
 src/personalNotes.txt
 server.js
 sitemap-generator.js
+package-lock.json

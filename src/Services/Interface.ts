@@ -4,7 +4,8 @@ export interface MapElement {
     isVisible : boolean;
 }
 
-export interface ArticlePreview {
+export interface Article {
+    id: number;
     PreviewImage : string | any;
     ArticleLink : string;
     Heading : string;

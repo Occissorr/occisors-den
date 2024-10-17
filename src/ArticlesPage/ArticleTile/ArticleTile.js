@@ -1,10 +1,10 @@
 import React from 'react';
-import '../RecentArticlesPage.css';
+import '../ArticlesPage.css';
 
-const ArticleTile = ({key, article, handleImageClick }) =>{
+const ArticleTile = ({ article, handleImageClick }) =>{
 
     return(
-        <div key={key} className="article-card">
+        <div className="article-card">
             <div className="article-image-wrapper">
                 <img 
                     className="article-image" 
