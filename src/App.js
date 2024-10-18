@@ -13,32 +13,32 @@ const PageIds = {
 function App() {
 
   const navigate = useNavigate(); // Initialize useNavigate hook
-  const location = useLocation();
+  //const location = useLocation();
 
   function navigateToPage(pageId) {
     navigate(`/${pageId}`); // Use navigate function here
   };
 
-  function changeFavicon(faviconURL) {
-    const favicon = document.querySelector('link[rel="icon"]');
-    if (favicon) {
-      favicon.href = faviconURL;
-    }
-  }
+  // function changeFavicon(faviconURL) {
+  //   const favicon = document.querySelector('link[rel="icon"]');
+  //   if (favicon) {
+  //     favicon.href = faviconURL;
+  //   }
+  // }
   
-  useEffect(() => {
-    // Check the path and set the favicon accordingly
-    switch (location.pathname) {
-      case `/${PageIds.ValorantPage}`:
-        changeFavicon(`${process.env.PUBLIC_URL}/favicon2.ico`);  // Correct path handling
-        break;
-      case `/${PageIds.MainPage}`:
-      case `/${PageIds.RecentArticlesPage}`:
-      default:
-        changeFavicon(`${process.env.PUBLIC_URL}/favicon1.ico`);  // Correct path handling
-        break;
-    }
-  }, [location]);
+  // useEffect(() => {
+  //   // Check the path and set the favicon accordingly
+  //   switch (location.pathname) {
+  //     case `/${PageIds.ValorantPage}`:
+  //       changeFavicon(`${process.env.PUBLIC_URL}/favicon2.ico`);  // Correct path handling
+  //       break;
+  //     case `/${PageIds.MainPage}`:
+  //     case `/${PageIds.RecentArticlesPage}`:
+  //     default:
+  //       changeFavicon(`${process.env.PUBLIC_URL}/favicon1.ico`);  // Correct path handling
+  //       break;
+  //   }
+  // }, [location]);
 
   return (
       <div className='main-app'>
