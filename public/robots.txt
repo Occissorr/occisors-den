@@ -1,5 +1,0 @@
-User-agent: *
-Disallow: /private/
-Sitemap: https://occisors-den.onrender.com/homepage-sitemap.xml
-Sitemap: https://occisors-den.onrender.com/valorant-sitemap.xml
-Sitemap: https://occisors-den.onrender.com/recentarticles-sitemap.xml

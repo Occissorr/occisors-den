@@ -1,0 +1,18 @@
+[
+  {
+    "map_id": "ascent",
+    "display_name": "Ascent",
+    "sites": ["A", "B"],
+    "status": "active",
+    "description": "A two-site map focused on mid control and utility trading.",
+    "key_concepts": ["mid control", "utility trading", "operator value"]
+  },
+  {
+    "map_id": "bind",
+    "display_name": "Bind",
+    "sites": ["A", "B"],
+    "status": "active",
+    "description": "A map with teleporters that rewards rotation reads.",
+    "key_concepts": ["fast rotations", "map control", "fake executes"]
+  }
+]
