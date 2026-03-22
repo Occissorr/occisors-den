@@ -115,6 +115,13 @@ def oauth2callback():
 
     return "Authorization successful."
 
+# ---------------------------------------------------
+# Blueprint Registration
+# ---------------------------------------------------
+
+api_bp.register_blueprint(article_bp)
+app.register_blueprint(api_bp)
+
 
 # ---------------------------------------------------
 # Run Server
@@ -129,11 +136,3 @@ def keep_alive():
 
 # def start_mcp():
 #     Thread(target=run_mcp).start()
-
-
-# ---------------------------------------------------
-# Blueprint Registration
-# ---------------------------------------------------
-
-api_bp.register_blueprint(article_bp)
-app.register_blueprint(api_bp)
