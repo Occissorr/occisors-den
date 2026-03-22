@@ -121,9 +121,7 @@ def oauth2callback():
 # ---------------------------------------------------
 
 def run():
-    port = int(os.environ.get('PORT', 8080))
-    serve(app, host="0.0.0.0", port=port)
-
+    serve(app, host="0.0.0.0", port=8080)
 
 def keep_alive():
     Thread(target=run).start()
