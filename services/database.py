@@ -1,8 +1,6 @@
 
 from pymongo import MongoClient, server_api
-from bson import ObjectId
 from services import props as Bot_Props
-
 
 # ---------------------------------------------------
 # MongoDB
@@ -33,3 +31,4 @@ def initialize_database():
         print("Database initialized")
     except Exception as e:
         print("DB init error:", e)
+        

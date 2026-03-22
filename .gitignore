@@ -29,3 +29,4 @@ package-lock.json
 /venv
 .env
 google_client_secret.json
+__pycache__/
