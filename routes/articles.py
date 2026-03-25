@@ -7,7 +7,7 @@ from services.database import articles
 # ARTICLES
 # ---------------------------------------------------
 
-bp = Blueprint("articles", __name__)
+bp = Blueprint("articles", __name__, url_prefix="/articles")
 
 @bp.route("/fetch", methods=["GET"])
 def get_articles():
