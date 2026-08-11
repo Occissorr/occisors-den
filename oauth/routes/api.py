@@ -63,10 +63,29 @@ def login():
     if not admin:
         return jsonify({"error": "Invalid credentials"}), 401
 
+    session["user"] = {
+        "username": user,
+        "role": admin.get("role", "admin")
+    }
     session["admin_logged_in"] = True
     session["admin_user"] = user
 
     return jsonify({"status": "logged_in"})
+
+
+@bp.route("/me", methods=["GET"])
+def me():
+    current_user = session.get("user")
+    if not current_user:
+        return jsonify({"error": "Unauthorized"}), 401
+
+    return jsonify({"user": current_user})
+
+
+@bp.route("/logout", methods=["POST"])
+def logout():
+    session.clear()
+    return jsonify({"status": "logged_out"})
 
 
 # ---------------------------------------------------
