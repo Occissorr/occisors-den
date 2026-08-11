@@ -27,3 +27,4 @@ package-lock.json
 .env
 google_client_secret.json
 __pycache__/
+/scripts

