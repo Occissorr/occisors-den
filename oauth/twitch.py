@@ -1,7 +1,8 @@
 import os
-from urllib.parse import urlparse, urlencode
+from urllib.parse import urlparse, urlencode, jsonify, redirect
 from flask import Blueprint, request
 import requests
+from webserver import session
 
 
 #---------------------------------------------------
@@ -20,6 +21,14 @@ bp = Blueprint("twitch", __name__, url_prefix="/twitch")
 @bp.route("/authorize")
 def twitch_authorize():
 
+    current_user = session.get("user")
+
+    if not current_user:
+        return jsonify({"error": "Unauthorized"}), 401
+
+    if current_user.get("role") != "admin":
+        return jsonify({"error": "Forbidden"}), 403
+
     scopes = [
         "user:read:chat",
         "user:write:chat"
@@ -37,7 +46,7 @@ def twitch_authorize():
         + urlencode(params)
     )
 
-    return f'<a href="{twitch_url}">Connect Twitch</a>'
+    return redirect(twitch_url)
 
 
 
