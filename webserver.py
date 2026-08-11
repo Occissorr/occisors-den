@@ -19,13 +19,14 @@ from waitress import serve
 
 from google_auth_oauthlib.flow import Flow
 
+from oauth import twitch
 from services import props as Bot_Props
 from services.database import (
     server_stats_collection, auth_tokens_collection, admins
 )
 # from mcp_server.mcp_server import run_mcp
 
-from routes import (api, articles)
+from oauth.routes import (articles, api)
 
 # ---------------------------------------------------
 # Flask Setup
@@ -54,6 +55,7 @@ CORS(app, supports_credentials=True)
 
 api_bp = api.bp
 article_bp = articles.bp
+twitch_bp = twitch.bp
 
 
 # ---------------------------------------------------
@@ -121,6 +123,7 @@ def oauth2callback():
 
 api_bp.register_blueprint(article_bp)
 app.register_blueprint(api_bp)
+app.register_blueprint(twitch_bp)
 
 
 # ---------------------------------------------------
