@@ -1,6 +1,6 @@
 import os
-from urllib.parse import urlparse, urlencode, jsonify, redirect
-from flask import Blueprint, request
+from urllib.parse import urlparse, urlencode
+from flask import Blueprint, request, jsonify, redirect
 import requests
 from webserver import session
 
