@@ -3,8 +3,8 @@ from urllib.parse import urlparse, urlencode
 from flask import Blueprint, request, jsonify, redirect
 import requests
 import logging
-from webserver import session
-
+from webserver import session, auth_tokens_collection
+from datetime import datetime, timedelta, timezone
 
 #---------------------------------------------------
 # Twitch Environment Variables
@@ -62,7 +62,7 @@ def twitch_callback():
     error_description = request.args.get("error_description")
     code = request.args.get("code")
 
-    logger.error(f"[Twitch OAuth] Error: {error}")
+    if error: logger.error(f"[Twitch OAuth] Error: {error}")
     logger.info(f"[Twitch OAuth] Code received: {bool(code)}")
 
     if error:
@@ -134,6 +134,35 @@ def twitch_callback():
     logger.info(f"[Twitch OAuth] Scopes: {validation_data.get('scopes')}")
     logger.info(f"[Twitch OAuth] Expires in: {validation_data.get('expires_in')} seconds")
     
+    now = datetime.now(timezone.utc)
 
+    expires_at = now + timedelta(
+        seconds=validation_data.get("expires_in", expires_in)
+    )
+
+    auth_tokens_collection.update_one(
+        {"service": "twitch"},
+        {
+            "$set": {
+                "service": "twitch",
+                "access_token": access_token,
+                "refresh_token": refresh_token,
+
+                "user_id": validation_data.get("user_id"),
+                "login": validation_data.get("login"),
+
+                "scopes": validation_data.get("scopes", scopes),
+
+                "expires_at": expires_at,
+                "updated_at": now
+            }
+        },
+        upsert=True
+    )
+
+    logger.info(
+        "[Twitch OAuth] Credentials saved for Twitch user: %s",
+        validation_data.get("login")
+    )
     return "Twitch authorization successful!"
 
