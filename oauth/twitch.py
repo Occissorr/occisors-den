@@ -3,8 +3,9 @@ from urllib.parse import urlparse, urlencode
 from flask import Blueprint, request, jsonify, redirect
 import requests
 import logging
-from webserver import session, auth_tokens_collection
+from services.database import auth_tokens_collection
 from datetime import datetime, timedelta, timezone
+from webserver import session
 
 #---------------------------------------------------
 # Twitch Environment Variables
