@@ -21,6 +21,8 @@ bp = Blueprint("twitch", __name__, url_prefix="/twitch")
 @bp.route("/authorize")
 def twitch_authorize():
 
+    print("[Twitch OAuth] Starting authorization process.")
+
     current_user = session.get("user")
 
     if not current_user:
@@ -45,6 +47,7 @@ def twitch_authorize():
         "https://id.twitch.tv/oauth2/authorize?"
         + urlencode(params)
     )
+    print("[Twitch OAuth] Redirecting to Twitch callback.")
 
     return redirect(twitch_url)
 
@@ -52,9 +55,13 @@ def twitch_authorize():
 
 @bp.route("/callback")
 def twitch_callback():
-    # Check whether Twitch returned an OAuth error
+    print("[Twitch OAuth] Callback received.")
     error = request.args.get("error")
     error_description = request.args.get("error_description")
+    code = request.args.get("code")
+
+    print(f"[Twitch OAuth] Error: {error}")
+    print(f"[Twitch OAuth] Code received: {bool(code)}")
 
     if error:
         return (
@@ -64,6 +71,7 @@ def twitch_callback():
     code = request.args.get("code")
 
     if not code:
+        print("[Twitch OAuth] callback code not received.")
         return "Missing Twitch authorization code.", 400
 
     # Exchange authorization code for access token
@@ -90,16 +98,24 @@ def twitch_callback():
 
     access_token = token_data.get("access_token")
     refresh_token = token_data.get("refresh_token")
+
+    if not access_token or not refresh_token:
+        print("[Twitch OAuth] Required tokens missing.")
+        print("[Twitch OAuth] Response:", token_data)
+        return "Twitch did not return the required tokens.", 500
+
+    print("[Twitch OAuth] Token received successfully.")
+
     expires_in = token_data.get("expires_in")
     scopes = token_data.get("scope", [])
 
     validation_response = requests.get(
-    "https://id.twitch.tv/oauth2/validate",
-    headers={
-        "Authorization": f"OAuth {access_token}"
-    },
-    timeout=15
-)
+        "https://id.twitch.tv/oauth2/validate",
+        headers={
+            "Authorization": f"OAuth {access_token}"
+        },
+        timeout=15
+    )
 
     if validation_response.status_code != 200:
         print(
@@ -116,11 +132,6 @@ def twitch_callback():
     print(f"[Twitch OAuth] Scopes: {validation_data.get('scopes')}")
     print(f"[Twitch OAuth] Expires in: {validation_data.get('expires_in')} seconds")
     
-
-    if not access_token or not refresh_token:
-        return "Twitch did not return the required tokens.", 500
-
-    print("[Twitch OAuth] Token received successfully.")
 
     return "Twitch authorization successful!"
 
