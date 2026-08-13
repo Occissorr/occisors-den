@@ -93,6 +93,30 @@ def twitch_callback():
     expires_in = token_data.get("expires_in")
     scopes = token_data.get("scope", [])
 
+    validation_response = requests.get(
+    "https://id.twitch.tv/oauth2/validate",
+    headers={
+        "Authorization": f"OAuth {access_token}"
+    },
+    timeout=15
+)
+
+    if validation_response.status_code != 200:
+        print(
+            "[Twitch OAuth] Token validation failed:",
+            validation_response.text
+        )
+        return "Twitch token validation failed.", 500
+
+    validation_data = validation_response.json()
+
+    print("[Twitch OAuth] Token validated successfully.")
+    print(f"[Twitch OAuth] User: {validation_data.get('login')}")
+    print(f"[Twitch OAuth] User ID: {validation_data.get('user_id')}")
+    print(f"[Twitch OAuth] Scopes: {validation_data.get('scopes')}")
+    print(f"[Twitch OAuth] Expires in: {validation_data.get('expires_in')} seconds")
+    
+
     if not access_token or not refresh_token:
         return "Twitch did not return the required tokens.", 500
 
