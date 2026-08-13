@@ -1,6 +1,10 @@
 
 from pymongo import MongoClient, server_api
 from services import props as Bot_Props
+import logging
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 # ---------------------------------------------------
 # MongoDB
@@ -20,15 +24,15 @@ admins = db["admins"]
 
 try:
     client.admin.command("ping")
-    print("✅ Connected to MongoDB")
+    logger.info("✅ Connected to MongoDB")
 except Exception as e:
-    print("❌ MongoDB connection error:", e)
+    logger.error("❌ MongoDB connection error:", e)
 
 
 def initialize_database():
     try:
         server_stats_collection.create_index("server_id", unique=True)
-        print("Database initialized")
+        logger.info("Database initialized")
     except Exception as e:
-        print("DB init error:", e)
+        logger.error("DB init error:", e)
         
