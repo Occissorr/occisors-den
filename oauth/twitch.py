@@ -2,6 +2,7 @@ import os
 from urllib.parse import urlparse, urlencode
 from flask import Blueprint, request, jsonify, redirect
 import requests
+import logging
 from webserver import session
 
 
@@ -12,6 +13,7 @@ TWITCH_CLIENT_ID = os.getenv("TWITCH_CLIENT_ID")
 TWITCH_CLIENT_SECRET = os.getenv("TWITCH_CLIENT_SECRET")
 TWITCH_REDIRECT_URI = "https://occisors-den.onrender.com/twitch/callback"
 
+logger = logging.getLogger(__name__)
 
 bp = Blueprint("twitch", __name__, url_prefix="/twitch")
 
@@ -21,7 +23,7 @@ bp = Blueprint("twitch", __name__, url_prefix="/twitch")
 @bp.route("/authorize")
 def twitch_authorize():
 
-    print("[Twitch OAuth] Starting authorization process.")
+    logger.info("[Twitch OAuth] Starting authorization process.")
 
     current_user = session.get("user")
 
@@ -47,7 +49,7 @@ def twitch_authorize():
         "https://id.twitch.tv/oauth2/authorize?"
         + urlencode(params)
     )
-    print("[Twitch OAuth] Redirecting to Twitch callback.")
+    logger.info("[Twitch OAuth] Redirecting to Twitch callback.")
 
     return redirect(twitch_url)
 
@@ -55,13 +57,13 @@ def twitch_authorize():
 
 @bp.route("/callback")
 def twitch_callback():
-    print("[Twitch OAuth] Callback received.")
+    logger.info("[Twitch OAuth] Callback received.")
     error = request.args.get("error")
     error_description = request.args.get("error_description")
     code = request.args.get("code")
 
-    print(f"[Twitch OAuth] Error: {error}")
-    print(f"[Twitch OAuth] Code received: {bool(code)}")
+    logger.error(f"[Twitch OAuth] Error: {error}")
+    logger.info(f"[Twitch OAuth] Code received: {bool(code)}")
 
     if error:
         return (
@@ -71,7 +73,7 @@ def twitch_callback():
     code = request.args.get("code")
 
     if not code:
-        print("[Twitch OAuth] callback code not received.")
+        logger.warning("[Twitch OAuth] callback code not received.")
         return "Missing Twitch authorization code.", 400
 
     # Exchange authorization code for access token
@@ -88,7 +90,7 @@ def twitch_callback():
     )
 
     if token_response.status_code != 200:
-        print(
+        logger.error(
             "[Twitch OAuth] Token exchange failed:",
             token_response.text
         )
@@ -100,11 +102,11 @@ def twitch_callback():
     refresh_token = token_data.get("refresh_token")
 
     if not access_token or not refresh_token:
-        print("[Twitch OAuth] Required tokens missing.")
-        print("[Twitch OAuth] Response:", token_data)
+        logger.error("[Twitch OAuth] Required tokens missing.")
+        logger.error(f"[Twitch OAuth] Response: {token_data}")
         return "Twitch did not return the required tokens.", 500
 
-    print("[Twitch OAuth] Token received successfully.")
+    logger.info("[Twitch OAuth] Token received successfully.")
 
     expires_in = token_data.get("expires_in")
     scopes = token_data.get("scope", [])
@@ -118,7 +120,7 @@ def twitch_callback():
     )
 
     if validation_response.status_code != 200:
-        print(
+        logger.error(
             "[Twitch OAuth] Token validation failed:",
             validation_response.text
         )
@@ -126,11 +128,11 @@ def twitch_callback():
 
     validation_data = validation_response.json()
 
-    print("[Twitch OAuth] Token validated successfully.")
-    print(f"[Twitch OAuth] User: {validation_data.get('login')}")
-    print(f"[Twitch OAuth] User ID: {validation_data.get('user_id')}")
-    print(f"[Twitch OAuth] Scopes: {validation_data.get('scopes')}")
-    print(f"[Twitch OAuth] Expires in: {validation_data.get('expires_in')} seconds")
+    logger.info("[Twitch OAuth] Token validated successfully.")
+    logger.info(f"[Twitch OAuth] User: {validation_data.get('login')}")
+    logger.info(f"[Twitch OAuth] User ID: {validation_data.get('user_id')}")
+    logger.info(f"[Twitch OAuth] Scopes: {validation_data.get('scopes')}")
+    logger.info(f"[Twitch OAuth] Expires in: {validation_data.get('expires_in')} seconds")
     
 
     return "Twitch authorization successful!"
