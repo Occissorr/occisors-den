@@ -37,10 +37,13 @@ def twitch_authorize():
     scopes = [
         "user:read:chat",
         "user:write:chat",
-        # "channel:manage:broadcast",
-        # "channel:manage:polls",
-        # "channel:manage:predictions",
-        "user:bot"
+        "channel:manage:broadcast",
+        "channel:manage:polls",
+        "channel:manage:predictions",
+        "channel:manage:redemptions",
+        "channel:read:editors",
+        "channel:read:polls",
+        "channel:read:predictions",        
     ]
 
     params = {
@@ -145,21 +148,31 @@ def twitch_callback():
         seconds=validation_data.get("expires_in", expires_in)
     )
 
+    # Use user_id to upsert a per-user Twitch credential document.
+    user_id = validation_data.get("user_id")
+
+    if not user_id:
+        logger.error("[Twitch OAuth] No user_id returned in validation data.")
+        return "Twitch did not return the required user id.", 500
+
     auth_tokens_collection.update_one(
-        {"service": "twitch"},
+        {"service": "twitch", "user_id": user_id},
         {
             "$set": {
                 "service": "twitch",
                 "access_token": access_token,
                 "refresh_token": refresh_token,
 
-                "user_id": validation_data.get("user_id"),
+                "user_id": user_id,
                 "login": validation_data.get("login"),
 
                 "scopes": validation_data.get("scopes", scopes),
 
                 "expires_at": expires_at,
                 "updated_at": now
+            },
+            "$setOnInsert": {
+                "created_at": now
             }
         },
         upsert=True
