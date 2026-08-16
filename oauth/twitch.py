@@ -36,7 +36,11 @@ def twitch_authorize():
 
     scopes = [
         "user:read:chat",
-        "user:write:chat"
+        "user:write:chat",
+        # "channel:manage:broadcast",
+        # "channel:manage:polls",
+        # "channel:manage:predictions",
+        "user:bot"
     ]
 
     params = {
